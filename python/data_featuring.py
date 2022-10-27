@@ -1,5 +1,6 @@
 import json
 import re, os
+import numpy as np
 from glob import glob
 
 """
@@ -62,7 +63,11 @@ def get_prices_from_text(text_str):
     if not '$**' in text_str:
         return number_list
     # Search prices
-    regex = r'\s\*\*\d+\$\*\*\s'
+    # change the regex from its origin to fit case 5622185.json in
+    # which the line containing price does not have whitespace at the end
+    # or at the begining. Moreover, the regex now covers the cases of
+    # float number of prives, e.g 1.5 USD
+    regex = r'\s*\*\*\d+\.*\d*\$\*\*\s*'
     for line in text_str.split('\n'):
         line = line.lower()
         if not '**' in line or not '$' in line:
@@ -79,22 +84,66 @@ def get_prices_from_text(text_str):
         if skip_this:
             continue
         for number in re.findall(regex, line):
-            number = float(number.replace('*', '').replace('$', '').strip())
+            number = float(number.strip().strip('**').rstrip('$'))
             if 0 < number < 1000000: # More than zero and less than million
-                print('Example line %d: %s' % (len(number_list) + 1, line.strip()))
                 number_list.append(number)
     number_list.sort()
     return number_list
 
+def collect_prices(inputfile):
+    ''' Collect all prices from the input file '''
+    assert os.path.isfile(inputfile)
+    item = read_json_file(inputfile)
+    assert item
+    text = item.get('text', '')
+    assert len(text) > 100
+    title = get_title_from_text(text)
+    for word in ['guide', 'tutorial', 'package', 'bulk']:
+        if word in title.lower():
+            return []
+    price_list = get_prices_from_text(text)
+    if len(price_list) < 1:
+        return []
+    print('Input file: %s' % inputfile)
+    # print('Url: /%s' % '/'.join(item['url'].split('/')[-2:]))
+    print('Title: %s' % title)
+    print('Products: %d' % len(price_list))
+    average = np.average(price_list)
+    print('Average: %.1f USD' % average)
+    median = np.median(price_list)
+    print('Median: %.1f USD' % median)
+    return price_list
+
+def extract_features(json_file):
+    '''Collects fields including json_id, seller, prices, products
+    and store them into a dictionary'''
+    json_data = read_json_file(json_file)
+    json_id = json_file.split('/')[-1]
+    text_str = json_data['text']
+    title = get_title_from_text(text_str)
+    seller = get_seller_from_text(text_str)
+    prices_list = get_prices_from_text(text_str)
+
+    # save features into a dictionary
+    feature_dict = {'id': json_id.split('.')[0], 'seller': seller,
+                    'product': title, 'prices': prices_list}
+    return feature_dict
+
+def save_into_json(file_path, json_list):
+    with open(file_path, 'w', encoding='utf-8') as fp:
+        for product_page in json_list:
+            fp.write(json.dumps(product_page))
+            fp.write('\n')
+
 def main():
+    full_features_list = []
     for json_file in FILE_LIST:
         if json_file in SKIP_LIST:
             continue
-        json_data = read_json_file(json_file)
-        text_str = json_data['text']
-        title = get_title_from_text(text_str)
-        seller = get_seller_from_text(text_str)
-        print(f'{seller}')
+        # json_file = '../database/5622185.json'
+        feature_dict = extract_features(json_file)
+        full_features_list.append(feature_dict)
+    save_into_json('master.json',full_features_list)
 
 if __name__ == '__main__':
     main()
