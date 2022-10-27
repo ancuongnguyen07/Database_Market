@@ -1,6 +1,5 @@
 import json
 import re, os
-import numpy as np
 from glob import glob
 
 """
@@ -90,36 +89,39 @@ def get_prices_from_text(text_str):
     number_list.sort()
     return number_list
 
-def collect_prices(inputfile):
-    ''' Collect all prices from the input file '''
-    assert os.path.isfile(inputfile)
-    item = read_json_file(inputfile)
-    assert item
-    text = item.get('text', '')
-    assert len(text) > 100
-    title = get_title_from_text(text)
-    for word in ['guide', 'tutorial', 'package', 'bulk']:
-        if word in title.lower():
-            return []
-    price_list = get_prices_from_text(text)
-    if len(price_list) < 1:
-        return []
-    print('Input file: %s' % inputfile)
-    # print('Url: /%s' % '/'.join(item['url'].split('/')[-2:]))
-    print('Title: %s' % title)
-    print('Products: %d' % len(price_list))
-    average = np.average(price_list)
-    print('Average: %.1f USD' % average)
-    median = np.median(price_list)
-    print('Median: %.1f USD' % median)
-    return price_list
+# def collect_prices(inputfile):
+#     ''' Collect all prices from the input file '''
+#     assert os.path.isfile(inputfile)
+#     item = read_json_file(inputfile)
+#     assert item
+#     text = item.get('text', '')
+#     assert len(text) > 100
+#     title = get_title_from_text(text)
+#     for word in ['guide', 'tutorial', 'package', 'bulk']:
+#         if word in title.lower():
+#             return []
+#     price_list = get_prices_from_text(text)
+#     if len(price_list) < 1:
+#         return []
+#     print('Input file: %s' % inputfile)
+#     # print('Url: /%s' % '/'.join(item['url'].split('/')[-2:]))
+#     print('Title: %s' % title)
+#     print('Products: %d' % len(price_list))
+#     average = np.average(price_list)
+#     print('Average: %.1f USD' % average)
+#     median = np.median(price_list)
+#     print('Median: %.1f USD' % median)
+#     return price_list
 
 def extract_features(json_file):
     '''Collects fields including json_id, seller, prices, products
     and store them into a dictionary'''
+    assert os.path.isfile(json_file)
     json_data = read_json_file(json_file)
+    assert json_data
     json_id = json_file.split('/')[-1]
     text_str = json_data['text']
+    assert len(text_str) > 100
     title = get_title_from_text(text_str)
     seller = get_seller_from_text(text_str)
     prices_list = get_prices_from_text(text_str)
