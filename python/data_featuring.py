@@ -62,14 +62,16 @@ def skipping_criteria(text_str):
         return True
 
 def skipping_pcs_criteria(line):
-    '''Skip 0 pcs or more than 1 pcs'''
+    '''Skip 0 pcs or more than 1 pcs and mix stuffs'''
     line = line.lower()
     regex_pcs = r'(\d+) pc'
     regex_pieces = r'(\d+) piece'
 
+    # skip mix stuffs
     if ' mix ' in line:
         return True
 
+    # skip 0 pcs or more than 1 pcs
     num_list = re.findall(regex_pcs, line)
     num_list.extend(re.findall(regex_pieces, line))
     for num in num_list:
@@ -133,7 +135,6 @@ def get_prices_from_text(text_str):
         # Skip 0 pcs or more than 1 pcs and mix stuffs
         if (skipping_pcs_criteria(line) or skipping_pcs_criteria(lines[i-1])
             or skipping_pcs_criteria(lines[i-2])):
-            # print(line)
             continue
 
         for number in re.findall(regex, line):
@@ -184,7 +185,7 @@ def extract_features(json_file):
 
     # save features into a dictionary
     feature_dict = {'id': json_id.split('.')[0], 'time-stamp': json_data['timestamp'],
-                    'seller': seller, 'product': title, 'prices': prices_list}
+                    'seller': seller, 'product': title, 'prices': prices_list, 'dates': dates_list}
     return feature_dict
 
 def save_into_json(file_path, json_list):
