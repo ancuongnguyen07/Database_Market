@@ -52,41 +52,95 @@ def get_seller_from_text(text):
             return line.lstrip(f'{SELLER_DETECT}').strip()
     return 'No seller'
 
-def get_prices_from_text(text_str):
-    ''' All USD prices from the text_str to a sorted integer list '''
-    number_list = []
+def skipping_criteria(text_str):
+    '''If below criteria meet, this text_str should be skipped'''
     text_str = text_str.replace('Tutorials and Guides', '').replace('Wallets Botnet logs', '')
     text_lower = text_str.lower()
     if 'guide' in text_lower or 'botnet' in text_lower:
-        return number_list
+        return True
     if not '$**' in text_str:
+        return True
+
+def skipping_pcs_criteria(line):
+    '''Skip 0 pcs or more than 1 pcs'''
+    line = line.lower()
+    regex_pcs = r'(\d+) pc'
+    regex_pieces = r'(\d+) piece'
+
+    if ' mix ' in line:
+        return True
+
+    num_list = re.findall(regex_pcs, line)
+    num_list.extend(re.findall(regex_pieces, line))
+    for num in num_list:
+        if num != '1':
+            return True
+
+    # for pcs in ['0', '2', '3', '4', '5', '6', '7', '8', '9']:
+    #     for word in ['pcs', 'piece']:
+    #         if pcs + word in line or pcs + ' ' + word in line:
+    #             skip_this = True
+    #             break
+    return False
+
+def get_dates_from_text(text_str):
+    '''Last upload date of products from text_str'''
+    date_list = []
+    if skipping_criteria(text_str):
+        return date_list
+
+    if '**10000000$**' in text_str:
+        return date_list
+
+    regex = r'(\d{4}-\d{2}-\d{2})'
+    lines = text_str.split('\n')
+    for i,line in enumerate(lines):
+        line = line.lower()
+        if line.startswith('dob') or '**0$**' in line: # Skip date of birth info of victims
+            continue
+
+        if skipping_pcs_criteria(line):
+            # print(line)
+            continue
+
+        if skipping_pcs_criteria(lines[i-1]) or skipping_pcs_criteria(lines[i-2]):
+            # print(lines[i-1])
+            continue
+
+        for date in re.findall(regex, line):
+            if date.startswith('2021') or date.startswith('2022'):
+                date_list.append(date)
+        
+    return date_list
+
+def get_prices_from_text(text_str):
+    ''' All USD prices from the text_str'''
+    number_list = []
+    if skipping_criteria(text_str):
         return number_list
     # Search prices
     # change the regex from its origin to fit case 5622185.json in
     # which the line containing price does not have whitespace at the end
     # or at the begining. Moreover, the regex now covers the cases of
     # float number of prives, e.g 1.5 USD
-    regex = r'\s*\*\*\d+\.*\d*\$\*\*\s*'
-    for line in text_str.split('\n'):
+    regex = r'\*\*(\d+\.*\d*)\$\*\*'
+    lines = text_str.split('\n')
+    for i,line in enumerate(lines):
         line = line.lower()
         if not '**' in line or not '$' in line:
             continue
-        if 'mix' in line: # Skip mixed data packages
+
+        # Skip 0 pcs or more than 1 pcs and mix stuffs
+        if (skipping_pcs_criteria(line) or skipping_pcs_criteria(lines[i-1])
+            or skipping_pcs_criteria(lines[i-2])):
+            # print(line)
             continue
-        # Skip 0 pcs or more than 1 pcs
-        skip_this = False
-        for pcs in ['0', '2', '3', '4', '5', '6', '7', '8', '9']:
-            for word in ['pcs', 'piece']:
-                if pcs + word in line or pcs + ' ' + word in line:
-                    skip_this = True
-                    break
-        if skip_this:
-            continue
+
         for number in re.findall(regex, line):
-            number = float(number.strip().strip('**').rstrip('$'))
+            number = float(number)
             if 0 < number < 1000000: # More than zero and less than million
                 number_list.append(number)
-    number_list.sort()
+    # number_list.sort()
     return number_list
 
 # def collect_prices(inputfile):
@@ -125,10 +179,12 @@ def extract_features(json_file):
     title = get_title_from_text(text_str)
     seller = get_seller_from_text(text_str)
     prices_list = get_prices_from_text(text_str)
+    dates_list = get_dates_from_text(text_str)
+    assert len(dates_list) == len(prices_list), f'{json_id}: dates:{len(dates_list)}\nprices:{len(prices_list)}'
 
     # save features into a dictionary
-    feature_dict = {'id': json_id.split('.')[0], 'time-stamp': json_data['timestamp'], 'seller': seller,
-                    'product': title, 'prices': prices_list}
+    feature_dict = {'id': json_id.split('.')[0], 'time-stamp': json_data['timestamp'],
+                    'seller': seller, 'product': title, 'prices': prices_list}
     return feature_dict
 
 def save_into_json(file_path, json_list):
@@ -137,7 +193,15 @@ def save_into_json(file_path, json_list):
             fp.write(json.dumps(product_page))
             fp.write('\n')
 
-def main():
+def test():
+    file_test = '../database/1508.json'
+    json_data = read_json_file(file_test)
+    # dates = get_dates_from_text(json_data['text'])
+    prices = get_prices_from_text(json_data['text'])
+    # for i,date in enumerate(dates):
+    #     print(f'{i+1}: {date}')
+
+def create_master_file():
     full_features_list = []
     for json_file in FILE_LIST:
         if json_file in SKIP_LIST:
@@ -145,7 +209,11 @@ def main():
         # json_file = '../database/5622185.json'
         feature_dict = extract_features(json_file)
         full_features_list.append(feature_dict)
-    save_into_json('master.json',full_features_list)
+    save_into_json('master_2.json',full_features_list)
+
+def main():
+    create_master_file()
+    # test()
 
 if __name__ == '__main__':
     main()
