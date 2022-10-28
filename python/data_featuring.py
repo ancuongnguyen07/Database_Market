@@ -127,7 +127,7 @@ def extract_features(json_file):
     prices_list = get_prices_from_text(text_str)
 
     # save features into a dictionary
-    feature_dict = {'id': json_id.split('.')[0], 'seller': seller,
+    feature_dict = {'id': json_id.split('.')[0], 'time-stamp': json_data['timestamp'], 'seller': seller,
                     'product': title, 'prices': prices_list}
     return feature_dict
 
