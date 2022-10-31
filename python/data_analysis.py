@@ -4,7 +4,7 @@ import json
 import numpy as np
 from collections import Counter
 
-JSON_FILE = 'master.json'
+JSON_FILE = 'master_2.json'
 
 def read_json_file(file_path):
     json_data = []
@@ -69,19 +69,83 @@ def data_set_statistic(json_data):
 
     return [total_products, max_price, min_price, avg_price, median_price, total_seller]
 
+def price_histogram(json_data):
+    '''
+    explore popular prices in the whole dataset
+    return a dictionary with a following format:
+    key: 'price', value: 'its frequency'
+    Example: {2.0: 3, 4.3: 10}
+    '''
+    price_counter = Counter()
+
+    for line in json_data:
+        for p in line['prices']:
+            price_counter[float(p)] += 1
+    
+    return price_counter
+
+def get_month_from_date(date_string):
+    '''return integer form of month from a date string
+    date string format: yyyy-mm-dd'''
+    year,month,day = date_string.split('-')
+    return '-'.join([month,year[-2:]])
+
+def average_per_month(json_data):
+    '''
+    Explore the average price of each month
+    return a dictionary with the following format:
+    key: <month>, value: <avg_price>
+    '''
+    avg_price_dist = {}
+    for entry in json_data:
+        for price,date in zip(entry['prices'],entry['dates']):
+            month = get_month_from_date(date)
+            if month not in avg_price_dist:
+                avg_price_dist[month] = [price]
+            else:
+                avg_price_dist[month].append(price)
+
+    for month in avg_price_dist:
+        avg_price_dist[month] = np.average(np.array(avg_price_dist[month]))
+
+    # sort in time ascending order
+    # example: 09-21, 10-21, 11-21,...,7-22
+    sorted_items = list(sorted(avg_price_dist.items(), key=lambda x:(x[0].split('-')[1],
+                        x[0].split('-')[0])))
+
+    return sorted_items
+
+def median_per_month(json_data):
+    '''
+    Explore the median price of each month
+    return a dictionary with the following format:
+    key: <month>, value: <median_price>
+    '''
+    med_price_dist = {}
+    for entry in json_data:
+        for price,date in zip(entry['prices'],entry['dates']):
+            month = get_month_from_date(date)
+            if month not in med_price_dist:
+                med_price_dist[month] = [price]
+            else:
+                med_price_dist[month].append(price)
+
+    for month in med_price_dist:
+        med_price_dist[month] = np.median(np.array(med_price_dist[month]))
+
+    # sort in time ascending order
+    # example: 09-21, 10-21, 11-21,...,7-22
+    sorted_items = list(sorted(med_price_dist.items(), key=lambda x:(x[0].split('-')[1],
+                        x[0].split('-')[0])))
+
+    return sorted_items
+
 def main():
-    json_data = read_json_file(JSON_FILE)
+    # json_data = read_json_file(JSON_FILE)
     # top_seller = get_top_seller(json_data)
     # print(top_seller)
+    pass
 
-    total_products, max_price, min_price, avg_price, median_price, total_seller = data_set_statistic(json_data)
-    print(f'Total number of products: {total_products}')
-    print(f'Maximum price: {max_price} USD')
-    print(f'Minimum price: {min_price} USD')
-    print(f'Average price: {avg_price:.2f} USD')
-    print(f'Median price: {median_price} USD')
-    print(f'Total number of sellers: {total_seller}')
-    print(f'Total number of urls inspected: {len(json_data)}')
 
 if __name__ == '__main__':
     main()
