@@ -51,6 +51,41 @@ def get_median_by_seller(json_data, seller):
         return None
     return np.median(np.array(prices))
 
+def seller_analysis(json_data):
+    '''return a list of tuples containing (seller,num_of_prods,min,max,avg,median)'''
+    seller_dict = {}
+
+    # retrieving seller and his/her prices of products
+    for entry in json_data:
+        seller = entry['seller']
+
+        if seller not in seller_dict:
+            seller_dict[seller] = []
+
+        seller_dict[seller].extend(entry['prices'])
+
+    seller_stat = []
+    for seller in seller_dict.keys():
+        list_of_prods = seller_dict[seller]
+        num_of_prods = len(list_of_prods)
+        min_price = min(list_of_prods)
+        max_price = max(list_of_prods)
+        # round the avg_price with 2 decimal places
+        avg_price = np.around(np.average(np.array(list_of_prods)),2)
+        median_price = np.median(np.array(list_of_prods))
+
+        seller_stat.append((seller,num_of_prods,min_price,max_price,avg_price,median_price))
+
+    return seller_stat
+
+def save_seller_stat(stats):
+    '''save the seller stat into a CSV file'''
+    with open('../analysis_result/seller_stat.csv', 'w') as fp:
+        fp.write('seller,num_of_prods,min_price,max_price,avg_price,median_price\n')
+        for entry in stats:
+            stat_string = ','.join(list(map(str,entry)))
+            fp.write(f'{stat_string}\n')
+
 def data_set_statistic(json_data):
     '''Return total products, max, min, average, median price, total seller'''
     prices = []
@@ -141,10 +176,13 @@ def median_per_month(json_data):
     return sorted_items
 
 def main():
-    # json_data = read_json_file(JSON_FILE)
+    json_data = read_json_file(JSON_FILE)
     # top_seller = get_top_seller(json_data)
     # print(top_seller)
-    pass
+    # pass
+
+    seller_stat = seller_analysis(json_data)
+    save_seller_stat(seller_stat)
 
 
 if __name__ == '__main__':

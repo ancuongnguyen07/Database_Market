@@ -55,7 +55,8 @@ def plot_med_price_timeseries():
 
 def main():
     # plot_price_histogram()
-    plot_med_price_timeseries()
+    # plot_med_price_timeseries()
+    pass
 
 if __name__ == '__main__':
     main()
