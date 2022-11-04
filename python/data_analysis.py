@@ -175,14 +175,56 @@ def median_per_month(json_data):
 
     return sorted_items
 
+def extract_type_of_product(json_data):
+    '''return a stat of each type of product
+    Count the number of products in each category'''
+    category_count = Counter()
+    for entry in json_data:
+        prod_info = entry['product'].lower()
+        if any(x in prod_info for x in ['info', 'ssn', 'dob']):
+            category_count['personal_info'] += 1
+        elif '.' in prod_info:
+            category_count['web_account'] += 1
+        elif 'email' in prod_info:
+            category_count['email'] += 1
+        elif 'credit card' in prod_info:
+            category_count['credit_card'] += 1
+        elif 'bank' in prod_info:
+            category_count['bank_account'] += 1
+        elif 'service' in prod_info:
+            category_count['harmful_service'] += 1
+        elif 'botnet' in prod_info:
+            category_count['botnet'] += 1
+        elif 'passport' in prod_info:
+            category_count['passport'] += 1
+        elif 'bin' in prod_info:
+            category_count['bank_identity_number'] += 1
+        elif 'rdp' in prod_info:
+            category_count['remote_desktop_protocol'] += 1
+        else:
+            category_count['undefine'] += 1
+
+    return dict(category_count)
+
+def save_category_statistic(category_stat):
+    '''Save the sorted statistic of category into a CSV file'''
+    # sort by the num_of_prods of each category in decending order
+    sorted_stat = list(sorted(category_stat.items(), key=lambda x:x[1], reverse=True))
+
+    with open('../analysis_result/category_stat.csv', 'w') as fp:
+        fp.write('category,num_of_prods\n')
+        for category,counter in sorted_stat:
+            fp.write(f'{category},{counter}\n')
+
 def main():
     json_data = read_json_file(JSON_FILE)
     # top_seller = get_top_seller(json_data)
     # print(top_seller)
     # pass
 
-    seller_stat = seller_analysis(json_data)
-    save_seller_stat(seller_stat)
+    # seller_stat = seller_analysis(json_data)
+    # save_seller_stat(seller_stat)
+    save_category_statistic(extract_type_of_product(json_data))
 
 
 if __name__ == '__main__':
