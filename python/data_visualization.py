@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
 import data_analysis as da
+import numpy as np
 
 MASTER_JSON_PATH = 'master_2.json'
 
 def plot_price_histogram():
+    '''Plot the occurence of each products' price in the whole dataset'''
     json_data = da.read_json_file(MASTER_JSON_PATH)
     price_histogram = da.price_histogram(json_data)
 
@@ -53,10 +55,30 @@ def plot_med_price_timeseries():
 
     plt.show()
 
+def plot_category_allocation():
+    json_data = da.read_json_file(MASTER_JSON_PATH)
+    category_stat = da.extract_type_of_product(json_data)
+
+    total_prods = sum(category_stat.values())
+    list_of_categories = list(category_stat.keys())
+    list_of_counts = list(category_stat.values())
+    list_of_allocation = np.array(list_of_counts) / total_prods
+
+    # set up colors
+    cmap = plt.get_cmap('tab20')
+    my_colors = [cmap(i) for i in np.linspace(0,1,len(list_of_categories))]
+
+    # plotting
+    plt.figure()
+    plt.pie(list_of_allocation,autopct='%1.2f%%',colors=my_colors)
+    plt.legend(list_of_categories)
+    plt.show()
+
 def main():
     # plot_price_histogram()
     # plot_med_price_timeseries()
-    pass
+    plot_category_allocation()
+    # pass
 
 if __name__ == '__main__':
     main()

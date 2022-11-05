@@ -202,7 +202,7 @@ def extract_type_of_product(json_data):
         elif 'rdp' in prod_info:
             category_count['remote_desktop_protocol'] += 1
         else:
-            category_count['undefine'] += 1
+            category_count['other'] += 1
 
     return dict(category_count)
 
