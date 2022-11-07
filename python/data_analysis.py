@@ -216,6 +216,17 @@ def save_category_statistic(category_stat):
         for category,counter in sorted_stat:
             fp.write(f'{category},{counter}\n')
 
+def cumulative_price_distribution(json_data):
+    price_counter = price_histogram(json_data)
+    sorted_price_dist = list(sorted(price_counter.items(), key=lambda x:x[0]))
+
+    list_of_count = np.array([x[1] for x in sorted_price_dist])
+    list_of_price = np.array([x[0] for x in sorted_price_dist])
+    cumsum_price = np.cumsum(list_of_count)
+    cumsum_price = cumsum_price / np.sum(list_of_count) * 100
+
+    return [(x,y) for x,y in zip(list_of_price, cumsum_price) if x <= 50]
+
 def main():
     json_data = read_json_file(JSON_FILE)
     # top_seller = get_top_seller(json_data)

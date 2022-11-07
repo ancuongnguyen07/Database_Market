@@ -74,10 +74,27 @@ def plot_category_allocation():
     plt.legend(list_of_categories)
     plt.show()
 
+def plot_cumprob_price():
+    '''Plot the cumulative frequency of each price in the ascending
+    range of prices'''
+
+    json_data = da.read_json_file(MASTER_JSON_PATH)
+    cumfreq_price = da.cumulative_price_distribution(json_data)
+
+    plt.figure()
+    plt.plot([x[0] for x in cumfreq_price],[x[1] for x in cumfreq_price],'r-')
+    plt.xlabel('Price (USD)')
+    plt.ylabel('Cumulative probability (%)')
+    plt.yticks(np.arange(0,110,10))
+    plt.xticks(np.arange(0,55,5))
+    plt.show()
+
+
 def main():
     # plot_price_histogram()
     # plot_med_price_timeseries()
-    plot_category_allocation()
+    # plot_category_allocation()
+    plot_cumprob_price()
     # pass
 
 if __name__ == '__main__':
