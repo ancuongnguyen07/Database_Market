@@ -1,12 +1,12 @@
-category,num_of_prods
-personal_info,27574
-web_account,3137
-botnet,697
-other,579
-bank_identity_number,464
-credit_card,380
-remote_desktop_protocol,340
-email,323
-bank_account,210
-harmful_service,108
-passport,76
+Category,Number of products
+Personal Data,27574
+Online Account,3137
+Botnet,697
+Other,579
+Bank Identity Number,464
+Credit Card,380
+Remote Desktop Protocol,340
+Email,323
+Bank Account,210
+Attacking service,108
+Passport,76
