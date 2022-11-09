@@ -4,7 +4,7 @@ import json
 import numpy as np
 from collections import Counter
 
-JSON_FILE = 'master_2.json'
+JSON_FILE = '../analysis_result/product_pages.json'
 
 def read_json_file(file_path):
     json_data = []
@@ -86,7 +86,7 @@ def save_seller_stat(stats):
             stat_string = ','.join(list(map(str,entry)))
             fp.write(f'{stat_string}\n')
 
-def data_set_statistic(json_data):
+def dataset_statistic(json_data):
     '''Return total products, max, min, average, median price, total seller'''
     prices = []
     sellers = set()
@@ -95,14 +95,26 @@ def data_set_statistic(json_data):
         sellers.add(entry['seller'])
 
     prices_np = np.array(prices)
-    total_products = len(prices)
+    total_items = len(prices)
     max_price = np.max(prices_np)
     min_price = np.min(prices_np)
     avg_price = np.average(prices_np)
     median_price = np.median(prices_np)
     total_seller = len(sellers)
 
-    return [total_products, max_price, min_price, avg_price, median_price, total_seller]
+    return [total_items, max_price, min_price, avg_price, median_price, total_seller]
+
+def save_dataset_stats(key_findings):
+    '''Save numerical results from the whole dataset statistic to a .txt file'''
+    total_items, max_price, min_price, avg_price, median_price, total_seller = key_findings
+
+    with open('../analysis_result/dataset_stats.txt', 'w', encoding='utf-8') as fp:
+        fp.write(f'Total number of items: {total_items}\n')
+        fp.write(f'Maximum price: {max_price:.2f} USD\n')
+        fp.write(f'Minimum price: {min_price:.2f} USD\n')
+        fp.write(f'Average price: {avg_price:.2f} USD\n')
+        fp.write(f'Median price: {median_price:.2f} USD\n')
+        fp.write(f'Total number of sellers: {total_seller}')
 
 def price_histogram(json_data):
     '''
@@ -217,6 +229,8 @@ def save_category_statistic(category_stat):
             fp.write(f'{category},{counter}\n')
 
 def cumulative_price_distribution(json_data):
+    '''Return a list of tuple having format:
+    (x,y) where x is a price, y is the cumulative probability of the price'''
     price_counter = price_histogram(json_data)
     sorted_price_dist = list(sorted(price_counter.items(), key=lambda x:x[0]))
 
@@ -235,7 +249,8 @@ def main():
 
     # seller_stat = seller_analysis(json_data)
     # save_seller_stat(seller_stat)
-    save_category_statistic(extract_type_of_product(json_data))
+    # save_category_statistic(extract_type_of_product(json_data))
+    save_dataset_stats(dataset_statistic(json_data))
 
 
 if __name__ == '__main__':

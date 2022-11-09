@@ -1,7 +1,6 @@
 *.gz
 *.tar
 database/
-*.txt
 *.temp
 */__pycache__/
 *.pdf
