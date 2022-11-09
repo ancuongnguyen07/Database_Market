@@ -1,7 +1,0 @@
-Total number of products: 53808
-Maximum price: 2500.0 USD
-Minimum price: 0.2 USD
-Average price: 15.92 USD
-Median price: 5.0 USD
-Total number of sellers: 30
-Total number of urls inspected: 33888

@@ -1,35 +1,52 @@
 \subsection{Research design}
+In order to replicate my result, please do the following steps:
+
+\begin{enumerate}
+    \item Access the original dataset provided by Juha Nurmi at \url{https://
+    mega.nz/folder/aJwVyIYJ#}.
+    \item Download \emph{database.tar.gz} (7 MB) and follow the instructions
+    in \emph{README.md}.
+    \item Check \emph{sha256sum}:\\\textbf{5a5f2cb4feb7fee597b0a26b1dc2fb33b1f
+    9cae639e995a89663198bcfa76f1a}.
+    \item Extract the compressed dataset (tar -xf database.tar.gz).
+    \item 33,896 JSON files are generated in the destination folder.
+    \item Clone the GitHub repo \url{https://github.com/ancuongnguyen07/Database
+    _Market.git} and follow the comprehensive \emph{README.md} document.
+\end{enumerate}
+
+%%%%% DATA SAMPLE
+\subsection{Samples}
+%
 The Database Market that sells personal data is accessible through \url{http://d
 atabase6e2t4yvdsrbw3qq6votzyfzspaso7sjga2tchx6tov23nsid.onion/} inside the
-anonymous Tor network. The dataset provided by teacher Juha Nurmi captures web
-pages of stolen credential information between November 2021 and June 2022.
-The dataset can be downloaded from \url{https://mega.nz/folder/aJwVyIYJ#9SWh-Z3-
-TpPfjHZeFxbeew}. In addition, I manually takes sorts of screenshots of the
-marketplace, which needs to register a free account for authentication.
-
+anonymous Tor network. The initial dataset, provided by teacher Juha Nurmi, can
+be downloaded from \url{https://mega.nz/folder/aJwVyIYJ#9SWh-Z3-
+TpPfjHZeFxbeew}.
 The provided dataset is an archive of 33,896 JSON files, 400 MB of raw size. Each
 JSON file is represented as the following fields as shown in \autoref{fig:original_json}:
 
 \begin{itemize}
     \item \emph{url}: URL address of webpage.
     \item \emph{text}: Text of the webpage.
-    \item \emph{time-stamp}: Data collection date.
+    \item \emph{timestamp}: Data collection date.
 \end{itemize}
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
-    {orginal_json.png}
+    {screenshots/orginal_json.png}
     \caption{An example JSON file from the provided dataset by Juha.}\label{fig:original_json}
 \end{figure}
 
-In order to achieve more insights of credentials for sale, I extracted from the \emph{text}
-field of the original JSON files into several key fields storing into a single JSON file.
+In order to achieve more insights of credentials for sale, I produced an additional JSON file
+,\emph{ProductPages},that reveals more key features of products sold on a targeted marketplace. Each entry in
+the customized JSON file represents a webpage of product containing many sorts of items for sale.
 \autoref{fig:custom_json} is an example of an entry, where I assigned the following fields.
 
 \begin{itemize}
-    \item \emph{id}: ID of product.
+    \item \emph{id}: Product ID\@.
     \item \emph{time-stamp}: Data collection date.
+    \item \emph{category}: Type of product.
     \item \emph{seller}: Username of seller.
     \item \emph{product}: Name of product.
     \item \emph{prices}: Prices of items.
@@ -39,7 +56,7 @@ field of the original JSON files into several key fields storing into a single J
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
-    {customized_json.png}
+    {screenshots/customized_json.png}
     \caption{A example JSON entry from my customized dataset}\label{fig:custom_json}
 \end{figure}
 
@@ -47,17 +64,47 @@ The datasets are under CC BY 4.0 license: You are free to copy, share, redistrib
 remix, transform, and build upon the material for any purpose, even commercially.
 You must give attribution and appropriate credit. Follow the terms: \url{https:/
 creativecommons.org/licenses/by/4.0/}.
-In order to replicate my result, please do the following steps:
 
-\begin{itemize}
-    \item Access the original dataset provided by Juha Nurmi at \url{https://
-    mega.nz/folder/aJwVyIYJ#}.
-    \item Download \emph{database.tar.gz} (7 MB) and follow the instructions
-    in \emph{README.md}.
-    \item Check \emph{sha256sum}: \textbf{5a5f2cb4feb7fee597b0a26b1dc2fb33b1f
-    9cae639e995a89663198bcfa76f1a}.
-    \item Extract the compressed dataset (tar -xf database.tar.gz).
-    \item 33,896 JSON files are generated in the destination folder.
-    \item Clone the GitHub repo \url{https://github.com/ancuongnguyen07/Database
-    _Market.git} and follow the comprehensive \emph{README.md} document.
-\end{itemize}
+%%%%% Data collection
+\subsection{Data collection}
+%
+The initial dataset captured web pages of stolen credentials sold in the Database market
+from November 2021 to June 2022. Based on that dataset, I extracted a certain of key
+fields, including \emph{product, prices, dates} and \emph{seller} for the \emph{text} field.
+In addition, I manually took screenshots of pages showing information of products and
+stores in Database Market. In order to access a marketplace hosted in Tor network,
+it is common that you need an invitation code to register an account on the marketplace.
+However, in case of Database Market, I can create an account without an invitation
+code.
+
+Filtering interesting fields from the text content in the webpage of product requiring
+some marking letters. For example, I noticed that the title of item sold in Database
+marketplace is enclosed by ``\#\#\#\#\#\#'', and the store name is covered by ``\#\#\#''. However,
+it is more complicated in the cases of \emph{prices} and \emph{dates}. As criminals can
+unconstrainedly format the description of their products, I am unable to conduct a common
+pattern to capture all prices and dates of uploaded items. Thus, in addition to the quite
+effective pattern, returned correct fields in most of pages, I added some criteria for
+specific cases. In terms of category, I filtered top common keywords in the title of
+products, and grouped items that contain the shared keyword into a category.
+
+%%%% Data analysis
+\subsection{Data analysis}
+%
+Applying statistic to the whole dataset, \emph{ProductPages}, I obtained the following
+numerical results.
+
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Total number of items & 53815\\
+        Total number of stores & 30\\
+        Maximum price & 2500.00 USD\\
+        Minimum price & 0.20 USD\\
+        Average price & 15.87 USD\\
+        Median price & 5.00 USD\\
+        \hline
+    \end{tabular}
+    \caption{Statistical result of the \emph{ProductPages} dataset}
+    \label{tab:dataset_stat}
+\end{table}
