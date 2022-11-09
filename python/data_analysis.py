@@ -54,15 +54,17 @@ def get_median_by_seller(json_data, seller):
 def seller_analysis(json_data):
     '''return a list of tuples containing (seller,num_of_prods,min,max,avg,median)'''
     seller_dict = {}
-
+    category_dict = {}
     # retrieving seller and his/her prices of products
     for entry in json_data:
         seller = entry['seller']
 
         if seller not in seller_dict:
             seller_dict[seller] = []
+            category_dict[seller] = set()
 
         seller_dict[seller].extend(entry['prices'])
+        category_dict[seller].add(entry['category'])
 
     seller_stat = []
     for seller in seller_dict.keys():
@@ -73,15 +75,17 @@ def seller_analysis(json_data):
         # round the avg_price with 2 decimal places
         avg_price = np.around(np.average(np.array(list_of_prods)),2)
         median_price = np.median(np.array(list_of_prods))
+        category_range = len(category_dict[seller])
 
-        seller_stat.append((seller,num_of_prods,min_price,max_price,avg_price,median_price))
+        seller_stat.append((seller,num_of_prods,category_range,min_price,max_price,
+                            avg_price,median_price))
 
     return seller_stat
 
 def save_seller_stat(stats):
     '''save the seller stat into a CSV file'''
     with open('../analysis_result/seller_stat.csv', 'w') as fp:
-        fp.write('Seller,Number of products,Minimum price,Maximum price,Average price,Median price\n')
+        fp.write('Seller,Number of products,Range of product type,Minimum price,Maximum price,Average price,Median price\n')
         for entry in stats:
             stat_string = ','.join(list(map(str,entry)))
             fp.write(f'{stat_string}\n')
@@ -192,29 +196,8 @@ def extract_type_of_product(json_data):
     Count the number of products in each category'''
     category_count = Counter()
     for entry in json_data:
-        prod_info = entry['product'].lower()
-        if any(x in prod_info for x in ['info', 'ssn', 'dob']):
-            category_count['Personal Data'] += 1
-        elif '.' in prod_info:
-            category_count['Online Account'] += 1
-        elif 'email' in prod_info:
-            category_count['Email'] += 1
-        elif 'credit card' in prod_info:
-            category_count['Credit Card'] += 1
-        elif 'bank' in prod_info:
-            category_count['Bank Account'] += 1
-        elif 'service' in prod_info:
-            category_count['Attacking service'] += 1
-        elif 'botnet' in prod_info:
-            category_count['Botnet'] += 1
-        elif 'passport' in prod_info:
-            category_count['Passport'] += 1
-        elif 'bin' in prod_info:
-            category_count['Bank Identity Number'] += 1
-        elif 'rdp' in prod_info:
-            category_count['Remote Desktop Protocol'] += 1
-        else:
-            category_count['Other'] += 1
+        category = entry['category']
+        category_count[category] += 1
 
     return dict(category_count)
 
@@ -249,7 +232,7 @@ def main():
 
     seller_stat = seller_analysis(json_data)
     save_seller_stat(seller_stat)
-    save_category_statistic(extract_type_of_product(json_data))
+    # save_category_statistic(extract_type_of_product(json_data))
     # save_dataset_stats(dataset_statistic(json_data))
 
 

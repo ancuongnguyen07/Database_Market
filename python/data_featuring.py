@@ -85,6 +85,31 @@ def skipping_pcs_criteria(line):
     #             break
     return False
 
+def get_category_from_title(prod_info):
+    '''Return the type of product from its title'''
+    if any(x in prod_info for x in ['info', 'ssn', 'dob']):
+        return 'Personal Data'
+    elif '.' in prod_info:
+        return 'Online Account'
+    elif 'email' in prod_info:
+        return 'Email'
+    elif 'credit card' in prod_info:
+        return 'Credit card'
+    elif 'bank' in prod_info:
+        return 'Bank Account'
+    elif 'service' in prod_info:
+        return 'Attacking service'
+    elif 'botnet' in prod_info:
+        return 'Botnet'
+    elif 'passport' in prod_info:
+        return 'Passport'
+    elif 'bin' in prod_info:
+        return 'Bank Identity Number'
+    elif 'rdp' in prod_info:
+        return 'Remote Desktop Protocol'
+    else:
+        return 'Other'
+
 def get_dates_from_text(text_str):
     '''Last upload date of products from text_str'''
     date_list = []
@@ -182,9 +207,10 @@ def extract_features(json_file):
     prices_list = get_prices_from_text(text_str)
     dates_list = get_dates_from_text(text_str)
     assert len(dates_list) == len(prices_list), f'{json_id}: dates:{len(dates_list)}\nprices:{len(prices_list)}'
+    category = get_category_from_title(title)
 
     # save features into a dictionary
-    feature_dict = {'id': json_id.split('.')[0], 'time-stamp': json_data['timestamp'],
+    feature_dict = {'id': json_id.split('.')[0], 'time-stamp': json_data['timestamp'], 'category': category,
                     'seller': seller, 'product': title, 'prices': prices_list, 'dates': dates_list}
     return feature_dict
 
@@ -210,7 +236,7 @@ def create_master_file():
         # json_file = '../database/5622185.json'
         feature_dict = extract_features(json_file)
         full_features_list.append(feature_dict)
-    save_into_json('master_2.json',full_features_list)
+    save_into_json('../analysis_result/product_pages.json',full_features_list)
 
 def main():
     create_master_file()
