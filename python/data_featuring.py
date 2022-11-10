@@ -87,6 +87,7 @@ def skipping_pcs_criteria(line):
 
 def get_category_from_title(prod_info):
     '''Return the type of product from its title'''
+    prod_info = prod_info.lower()
     if any(x in prod_info for x in ['info', 'ssn', 'dob']):
         return 'Personal Data'
     elif '.' in prod_info:
@@ -97,10 +98,6 @@ def get_category_from_title(prod_info):
         return 'Credit card'
     elif 'bank' in prod_info:
         return 'Bank Account'
-    elif 'service' in prod_info:
-        return 'Attacking service'
-    elif 'botnet' in prod_info:
-        return 'Botnet'
     elif 'passport' in prod_info:
         return 'Passport'
     elif 'bin' in prod_info:
@@ -113,8 +110,6 @@ def get_category_from_title(prod_info):
 def get_dates_from_text(text_str):
     '''Last upload date of products from text_str'''
     date_list = []
-    if skipping_criteria(text_str):
-        return date_list
 
     if '**10000000$**' in text_str:
         return date_list
@@ -143,8 +138,6 @@ def get_dates_from_text(text_str):
 def get_prices_from_text(text_str):
     ''' All USD prices from the text_str'''
     number_list = []
-    if skipping_criteria(text_str):
-        return number_list
     # Search prices
     # change the regex from its origin to fit case 5622185.json in
     # which the line containing price does not have whitespace at the end
@@ -202,6 +195,8 @@ def extract_features(json_file):
     json_id = json_file.split('/')[-1]
     text_str = json_data['text']
     assert len(text_str) > 100
+    if skipping_criteria(text_str):
+        return None
     title = get_title_from_text(text_str)
     seller = get_seller_from_text(text_str)
     prices_list = get_prices_from_text(text_str)
@@ -235,6 +230,8 @@ def create_master_file():
             continue
         # json_file = '../database/5622185.json'
         feature_dict = extract_features(json_file)
+        if feature_dict == None:
+            continue
         full_features_list.append(feature_dict)
     save_into_json('../analysis_result/product_pages.json',full_features_list)
 
