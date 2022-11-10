@@ -193,23 +193,28 @@ def median_per_month(json_data):
 
 def extract_type_of_product(json_data):
     '''return a stat of each type of product
-    Count the number of products in each category'''
-    category_count = Counter()
+    append price of each item belonging to a given type'''
+    category_count = {}
     for entry in json_data:
         category = entry['category']
-        category_count[category] += 1
+        
+        if category not in category_count:
+            category_count[category] = entry['prices']
+        else:
+            category_count[category].extend(entry['prices'])
 
-    return dict(category_count)
+    return [(category,len(price_list),np.mean(np.array(price_list))) for category,price_list 
+            in category_count.items()]
 
 def save_category_statistic(category_stat):
     '''Save the sorted statistic of category into a CSV file'''
     # sort by the num_of_prods of each category in decending order
-    sorted_stat = list(sorted(category_stat.items(), key=lambda x:x[1], reverse=True))
+    sorted_stat = list(sorted(category_stat, key=lambda x:x[1], reverse=True))
 
     with open('../analysis_result/category_stat.csv', 'w') as fp:
-        fp.write('Category,Number of products\n')
-        for category,counter in sorted_stat:
-            fp.write(f'{category},{counter}\n')
+        fp.write('Category,Number of products,Average price\n')
+        for category,counter,avg_price in sorted_stat:
+            fp.write(f'{category},{counter},{avg_price:.2f}\n')
 
 def cumulative_price_distribution(json_data):
     '''Return a list of tuple having format:
@@ -233,7 +238,7 @@ def main():
     seller_stat = seller_analysis(json_data)
     save_seller_stat(seller_stat)
     # save_category_statistic(extract_type_of_product(json_data))
-    # save_dataset_stats(dataset_statistic(json_data))
+    save_dataset_stats(dataset_statistic(json_data))
 
 
 if __name__ == '__main__':

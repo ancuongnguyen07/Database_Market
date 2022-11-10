@@ -1,12 +1,10 @@
-Category,Number of products
-Personal Data,27574
-Online Account,3137
-Botnet,697
-Other,579
-Bank Identity Number,464
-Credit Card,380
-Remote Desktop Protocol,340
-Email,323
-Bank Account,210
-Attacking service,108
-Passport,76
+Category,Number of products,Average price
+Personal Data,35621,7.74
+Online Account,9760,13.73
+Other,2969,89.43
+Bank Identity Number,1368,9.24
+Bank Account,1266,48.49
+Email,925,75.71
+Passport,877,25.10
+Credit card,583,13.87
+Remote Desktop Protocol,446,10.85
