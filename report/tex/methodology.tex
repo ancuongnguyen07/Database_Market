@@ -91,7 +91,7 @@ products, and grouped items that contain the shared keyword into a category.
 \subsection{Data analysis}
 %
 Applying statistic to the whole dataset, \emph{ProductPages}, I obtained the following
-numerical results.
+numerical results shown in \autoref{tab:dataset_stat}.
 
 \begin{table}
     \centering
@@ -105,6 +105,57 @@ numerical results.
         Median price & 5.00 USD\\
         \hline
     \end{tabular}
-    \caption{Statistical result of the \emph{ProductPages} dataset}
+    \caption{Statistical result of the \emph{ProductPages} dataset.}
     \label{tab:dataset_stat}
 \end{table}
+
+The maximum 2500 USD, or other prices greater than 1000 USD, appears with a low
+frequency, an outlier. In this case, 2500 USD is a price of a set of 1000 personal data
+entries. On the other hand, the average price of personal data is 7.73 USD shown
+in \autoref{tab:category_stat}. The price of personal data item depends on the amount
+of data pieces included. For example, in the product ID 978, 100 USA \acrshort{ssn}+\acrshort{dob}
+is sold at 80 USD, while a buyer has to purchase 250 USD to retrieve 500 USA \acrshort{ssn}+\acrshort{dob}.
+In addition, the quality of identity information, also influences
+the price. For example, in the product ID 5507764, a set of \acrshort{ssn}+\acrshort{dob}+\acrshort{dl}+\acrshort{mmn}
+is sold at 5 USD, while a batch of \acrshort{ssn}+\acrshort{dob}+\acrshort{cs} in ID 5434366 is
+assigned at 7 USD\@. The quality of identity information here is interpreted as the level
+of financial impact and the simplicity to expose other credential data if this
+information is compromised.
+
+There are a certain of product types are traded in Database marketplace. However,
+two main categories that most of traded items belong to are \emph{Personal data}
+and \emph{Online account}, as shown in \autoref{fig:type_allocation}. \emph{Online
+account} category contains compromised online accounts from popular services,
+including \textit{Netflix}, \textit{Amazon}, \textit{Venmo}, etc. A full list
+of attacked websites is accessible via \url{https://github.com/ancuongnguyen07/
+Database_Market/blob/main/analysis_result/leaked_websites.txt}.
+
+There are in total 30 stores, or sellers, in the database. \emph{Goldmaster}, the
+most active seller, has sold the largest amount of products during 11/2021--06/2022,
+11882 items. However, \emph{bussman shop}, a store that has the greatest average price (430 USD),
+only sold 9 items. Furthermore, \emph{bussman shop}, provides service of customizing
+ID documents for \acrshort{eu}/\acrshort{us}; thus, the prices of it's products are significant
+higher than those of other shops, ranging from 80 USD to 1200 USD\@. A table of full
+numerical results from analyzing stores is accessible in \url{https://github.com/anc
+uongnguyen07/Database_Market/blob/main/analysis_result/seller_stat.csv}.
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {plots/category_allocation.png}
+    \caption{Product types allocation.}\label{fig:type_allocation}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {plots/price_histogram.png}
+    \caption{Price distribution.}\label{fig:price_range}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {plots/cumprob_price.png}
+    \caption{Cumulative probability of price range 0--50 USD.}\label{fig:cum_prob}
+\end{figure}

@@ -4,6 +4,8 @@
 \usepackage[parfill]{parskip}
 \usepackage{hyperref}
 \usepackage{appendix}
+\usepackage[l3]{csvsimple}
+\usepackage{glossaries}
 \graphicspath{ {./figures/} }
 
 % reference package
@@ -14,11 +16,17 @@
 \author{Cuong Nguyen}
 \date{22/04/2022}
 
+\makeglossaries{}
+\loadglsentries{tex/glossary.tex}
+
+
 \begin{document}
     
 \maketitle
 
 \tableofcontents
+
+\printglossary{}
 
 \section{Abstract}\label{sec:abstract}
 
@@ -39,5 +47,8 @@
 \appendix
 \section{Tables of statistic results of stores and item categories}
 \input{tex/appendix.tex}
+
+\section{Screenshots of Database marketplace}
+\input{tex/appendix_screenshots.tex}
 
 \end{document}
