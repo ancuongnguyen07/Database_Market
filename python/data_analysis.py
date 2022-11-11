@@ -3,7 +3,7 @@
 import json
 import numpy as np
 from collections import Counter
-import re
+import re, requests
 
 JSON_FILE = '../analysis_result/product_pages.json'
 
@@ -239,6 +239,24 @@ def extract_website(json_data):
         webs.update(['.'.join(x) for x in re.findall(regex,title)])
 
     return webs
+
+# def validate_websites(web_list):
+#     valid_websites = []
+#     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:106.0) Gecko/20100101 Firefox/106.0'}
+#     for web in web_list:
+#         print(web)
+#         try:
+#             response = requests.head(f'https://www.{web.lower()}', headers=headers, timeout=5)
+#             print(response.status_code)
+#             if response.status_code == 200:
+#                 valid_websites.append(web)
+#         except requests.exceptions.ConnectionError as e:
+#             print('no response')
+#             continue
+#         except requests.exceptions.ReadTimeout as e:
+#             print('Timeout')
+#             continue
+#     return valid_websites
 
 def save_leaked_websites(web_list):
     with open('../analysis_result/leaked_websites.txt', 'w') as fp:

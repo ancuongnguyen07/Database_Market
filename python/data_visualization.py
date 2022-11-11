@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import data_analysis as da
 import numpy as np
 
-MASTER_JSON_PATH = 'master_2.json'
+MASTER_JSON_PATH = '../analysis_result/product_pages.json'
+CATEGORY_STAT_PATH = '../analysis_result/category_stat.csv'
 
 def plot_price_histogram():
     '''Plot the occurence of each products' price in the whole dataset'''
@@ -58,10 +59,10 @@ def plot_med_price_timeseries():
 def plot_category_allocation():
     json_data = da.read_json_file(MASTER_JSON_PATH)
     category_stat = da.extract_type_of_product(json_data)
+    list_of_counts = [tup[1] for tup in category_stat]
 
-    total_prods = sum(category_stat.values())
-    list_of_categories = list(category_stat.keys())
-    list_of_counts = list(category_stat.values())
+    total_prods = sum(list_of_counts)
+    list_of_categories = [tup[0] for tup in category_stat]
     list_of_allocation = np.array(list_of_counts) / total_prods
 
     # set up colors
@@ -89,13 +90,55 @@ def plot_cumprob_price():
     plt.xticks(np.arange(0,55,5))
     plt.show()
 
+def tuplelize_category_stat(file_path):
+    '''Retrieve stat from the CSV file to a list of tuples
+    (<category>,<amount_of_products>,<avg_price>)'''
+
+    stats_tuples = []
+    with open(file_path, 'r', encoding='utf-8') as fp:
+        lines = fp.read().strip().split('\n')
+        for i in range(1,len(lines)):
+            stats_tuples.append(lines[i].split(','))
+    return stats_tuples
+
+def plot_category_stat():
+    '''Plot the statistical result in terms of product category.
+    On the left y-axis, it illustartes the number of products.
+    On the right y-axis, it shows the average price'''
+
+    stat_result = tuplelize_category_stat(CATEGORY_STAT_PATH)
+    list_of_category = [tup[0] for tup in stat_result]
+    list_of_num_prods = list(map(int,[tup[1] for tup in stat_result]))
+    list_of_avg_price = list(map(float,[tup[2] for tup in stat_result]))
+    list_of_category = ['\n'.join(x.split()) for x in list_of_category]
+
+    # plotting
+    fig,ax = plt.subplots()
+    X_axis = np.arange(len(list_of_category))
+
+    # plot number of prods
+    ax.bar(X_axis - 0.2, list_of_num_prods, width=0.4 ,color='red')
+    ax.set_xlabel('Product type')
+    ax.set_ylabel('Amount of items', color='red')
+    ax.set_ylim(ymin=0)
+    ax.set_yticks(np.arange(0,40000,4000))
+    ax.set_xticks(X_axis, list_of_category)
+
+    # plot average price
+    ax2 = ax.twinx()
+    ax2.bar(X_axis + 0.2, list_of_avg_price, width=0.4,color='blue')
+    ax2.set_ylabel('Average price', color='blue')
+    ax2.set_yticks(np.arange(0,100,10))
+
+    plt.show()
 
 def main():
     # plot_price_histogram()
     # plot_med_price_timeseries()
     # plot_category_allocation()
-    plot_cumprob_price()
-    # pass
+    # plot_cumprob_price()
+    # plot_category_stat()
+    pass
 
 if __name__ == '__main__':
     main()
