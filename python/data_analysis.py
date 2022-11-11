@@ -3,6 +3,7 @@
 import json
 import numpy as np
 from collections import Counter
+import re
 
 JSON_FILE = '../analysis_result/product_pages.json'
 
@@ -229,17 +230,33 @@ def cumulative_price_distribution(json_data):
 
     return [(x,y) for x,y in zip(list_of_price, cumsum_price) if x <= 50]
 
+def extract_website(json_data):
+    '''Extract compromised website from title of products'''
+    webs = set()
+    for entry in json_data:
+        title = entry['product']
+        regex = r'([a-zA-Z]+)\.([a-z]+)'
+        webs.update(['.'.join(x) for x in re.findall(regex,title)])
+
+    return webs
+
+def save_leaked_websites(web_list):
+    with open('../analysis_result/leaked_websites.txt', 'w') as fp:
+        for web in web_list:
+            fp.write(f'{web}\n')
+
 def main():
     json_data = read_json_file(JSON_FILE)
     # top_seller = get_top_seller(json_data)
     # print(top_seller)
     # pass
 
-    seller_stat = seller_analysis(json_data)
-    save_seller_stat(seller_stat)
+    # seller_stat = seller_analysis(json_data)
+    # save_seller_stat(seller_stat)
     # save_category_statistic(extract_type_of_product(json_data))
-    save_dataset_stats(dataset_statistic(json_data))
+    # save_dataset_stats(dataset_statistic(json_data))
 
+    save_leaked_websites(extract_website(json_data))
 
 if __name__ == '__main__':
     main()
