@@ -88,7 +88,7 @@ def skipping_pcs_criteria(line):
 def get_category_from_title(prod_info):
     '''Return the type of product from its title'''
     prod_info = prod_info.lower()
-    if any(x in prod_info for x in ['info', 'ssn', 'dob']):
+    if any(x in prod_info for x in ['info', 'ssn', 'dob', 'dl']):
         return 'Personal Data'
     elif '.' in prod_info:
         return 'Online Account'

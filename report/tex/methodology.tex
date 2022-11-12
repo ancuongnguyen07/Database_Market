@@ -1,4 +1,10 @@
 \subsection{Research design}
+In order to answer research questions, I explored more key fields from the initial
+database. These fields includes price, date, product type, and shop information.
+By applying appropriate statistic on key fields, I produced conclusions based on
+numerical results. In addtion, manually discovering the Database market, I captured
+a certain of screenshots that support my observation.
+
 In order to replicate my result, please do the following steps:
 
 \begin{enumerate}
@@ -85,7 +91,9 @@ unconstrainedly format the description of their products, I am unable to conduct
 pattern to capture all prices and dates of uploaded items. Thus, in addition to the quite
 effective pattern, returned correct fields in most of pages, I added some criteria for
 specific cases. In terms of category, I filtered top common keywords in the title of
-products, and grouped items that contain the shared keyword into a category.
+products, and grouped items that contain the shared keyword into a category. For example,
+any titles containing ``info'', ``ssn'', ``dob'', and ``dl'' belong to the \emph{Personal
+data} category.
 
 %%%% Data analysis
 \subsection{Data analysis}
@@ -158,4 +166,55 @@ uongnguyen07/Database_Market/blob/main/analysis_result/seller_stat.csv}.
     \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
     {plots/cumprob_price.png}
     \caption{Cumulative probability of price range 0--50 USD.}\label{fig:cum_prob}
+\end{figure}
+
+%%%%% Limitation
+\subsection{Limitations}
+% time range is so far from this moment
+The initial database recorded product information in 8 months, from November 2021
+to June 2022, covering 33896 product pages. First, the time of writting this study,
+November 2022, is 5-month after the last captured product in the database; therefore,
+observations and propositions instroduced in this study do not provide the most
+updated status of the Database marketplace. In comparison to product entries in
+the original database, the marketplace now provides more items; and many products
+recorded in the database is now either withdrawed or sold out, i.e product ID
+5609797 (\autoref{fig:not_found_prod}).
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {screenshots/not_found_prod.png}
+    \caption{Withdrawed/sold-out product ID 5609797.}\label{fig:not_found_prod}
+\end{figure}
+
+% seller can freely format product description
+In Database marketplace, shops can unconstrainedly format their product description;
+thus, I cannot filter exactly interesting fields in all cases, resulting minor noise
+in the examination.
+% group category manually, by personal preference
+Moreover, product category is not provided in the inital database, not even in the
+product page. In order to attain product type data, I grouped products that have
+the common keywords in a category as presented in \autoref{tab:category_stat}.
+This text-based clustering method is not reliable in all cases.
+
+% no feedback information of seller
+I examined that there is a shortage of feedback information about stores, or sellers, in
+the Database market. As shown in \autoref{fig:seller_asap_market}, in the ASAP marketplace,
+feedbacks from customers are classified as negative and positive, that is helpful
+to detect an unreliable shop. On the other hand, as presented in \autoref{fig:seller_Database},
+Database market does not display feedbacks a specific store, but buyers can send
+comments via the internal ticket which is not shown in the store dashboad.
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {screenshots/seller_feedback_asap_marketplace.png}
+    \caption{A shop page in ASAP marketplace.}\label{fig:seller_asap_market}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {screenshots/seller_page.png}
+    \caption{A shop page in Database marketplace.}\label{fig:seller_Database}
 \end{figure}
