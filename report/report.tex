@@ -8,7 +8,7 @@
 \usepackage{glossaries}
 \graphicspath{ {./figures/} }
 
-% reference package
+% reference-managing package
 \usepackage{biblatex}
 \addbibresource{references.bib}
 
@@ -29,8 +29,10 @@
 \printglossary{}
 
 \section{Abstract}\label{sec:abstract}
+\input{tex/abstract.tex}
 
 \section{Background}\label{sec:background}
+\input{tex/background.tex}
 
 \section{Research questions}\label{sec:research_questions}
 \input{tex/research_question.tex}
@@ -38,9 +40,11 @@
 \section{Methodology}\label{sec:method}
 \input{tex/methodology.tex}
 
-\section{Result}\label{sec:result}
+\section{Results}\label{sec:result}
+\input{tex/result.tex}
 
 \section{Conclusions}\label{sec:conclusion}
+\input{tex/conclusion.tex}
 
 \printbibliography{}
 
