@@ -271,10 +271,10 @@ def main():
 
     # seller_stat = seller_analysis(json_data)
     # save_seller_stat(seller_stat)
-    # save_category_statistic(extract_type_of_product(json_data))
+    save_category_statistic(extract_type_of_product(json_data))
     # save_dataset_stats(dataset_statistic(json_data))
 
-    save_leaked_websites(extract_website(json_data))
+    # save_leaked_websites(extract_website(json_data))
 
 if __name__ == '__main__':
     main()

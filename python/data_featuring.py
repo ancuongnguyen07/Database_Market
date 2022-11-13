@@ -88,13 +88,13 @@ def skipping_pcs_criteria(line):
 def get_category_from_title(prod_info):
     '''Return the type of product from its title'''
     prod_info = prod_info.lower()
-    if any(x in prod_info for x in ['info', 'ssn', 'dob', 'dl']):
+    if any(keyword in prod_info for keyword in ['info', 'ssn', 'dob', 'dl', 'usa full']):
         return 'Personal Data'
-    elif '.' in prod_info:
+    elif any(keyword in prod_info for keyword in ['.','hotel']):
         return 'Online Account'
-    elif 'email' in prod_info:
+    elif any(keyword in prod_info for keyword in ['email','e-mail']):
         return 'Email'
-    elif 'credit card' in prod_info:
+    elif any(keyword in prod_info for keyword in ['credit card','vcc']):
         return 'Credit card'
     elif 'bank' in prod_info:
         return 'Bank Account'
@@ -104,6 +104,8 @@ def get_category_from_title(prod_info):
         return 'Bank Identity Number'
     elif 'rdp' in prod_info:
         return 'Remote Desktop Protocol'
+    elif 'lookup service' in prod_info:
+        return 'Lookup Service'
     else:
         return 'Other'
 
@@ -224,6 +226,7 @@ def test():
     #     print(f'{i+1}: {date}')
 
 def create_master_file():
+    '''Create a master JSON file storing key fields of product pages'''
     full_features_list = []
     for json_file in FILE_LIST:
         if json_file in SKIP_LIST:

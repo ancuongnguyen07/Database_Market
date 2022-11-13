@@ -135,9 +135,9 @@ def plot_category_stat():
 def main():
     # plot_price_histogram()
     # plot_med_price_timeseries()
-    # plot_category_allocation()
+    plot_category_allocation()
     # plot_cumprob_price()
-    # plot_category_stat()
+    plot_category_stat()
     pass
 
 if __name__ == '__main__':
