@@ -121,24 +121,93 @@ def plot_category_stat():
     ax.set_xlabel('Product type')
     ax.set_ylabel('Amount of items', color='red')
     ax.set_ylim(ymin=0)
-    ax.set_yticks(np.arange(0,40000,4000))
+    ax.set_yticks(np.arange(0,44000,4000))
     ax.set_xticks(X_axis, list_of_category)
 
     # plot average price
     ax2 = ax.twinx()
     ax2.bar(X_axis + 0.2, list_of_avg_price, width=0.4,color='blue')
-    ax2.set_ylabel('Average price', color='blue')
-    ax2.set_yticks(np.arange(0,100,10))
+    ax2.set_ylabel('Average price (USD)', color='blue')
+    # ax2.set_yticks(np.arange(0,130,10))
+
+    plt.show()
+
+def plot_top_average_price_seller():
+    json_data = da.read_json_file(MASTER_JSON_PATH)
+    # Top 10
+    avg_price_index = 5
+    top_avg_price_sellers = da.top_field_seller(json_data, avg_price_index)
+
+    # plotting
+    plt.figure()
+    plt.bar([tup[0] for tup in top_avg_price_sellers],
+        [tup[avg_price_index] for tup in top_avg_price_sellers])
+    plt.ylabel('Average price (USD)')
+    plt.xlabel('Store')
+    plt.xticks(rotation=45, ha='right')
+    plt.yticks(np.arange(0,550,50))
+    plt.show()
+
+def plot_top_num_prods_seller():
+    json_data = da.read_json_file(MASTER_JSON_PATH)
+    # Top 10
+    num_prods_index = 1
+    top_num_prods_sellers = da.top_field_seller(json_data, num_prods_index)
+
+    avg_price_index = 5
+    top_avg_price_sellers = da.top_field_seller(json_data, avg_price_index)
+
+    # plotting
+    fig,(ax1, ax2) = plt.subplots(2)
+    
+    # plot average price bar chart
+    labels1 = np.arange(len([tup[0] for tup in top_avg_price_sellers]))
+    ax1.bar(labels1 - 0.2,
+        [tup[avg_price_index] for tup in top_avg_price_sellers], width=0.4)
+    ax1.set_ylabel('Average price (USD)', color='blue')
+    ax1.set_xlabel('Store')
+    ax1.set_xticks(labels1,[tup[0] for tup in top_avg_price_sellers])
+    # ax1.set_xticklabels(labels1)
+    ax1.set_yticks(np.arange(0,525,25))
+    ax1.set_title('Top 10 stores according to the average price')
+
+    # second y-axis for num of products
+    ax1_prime = ax1.twinx()
+    ax1_prime.bar(labels1 + 0.2, [tup[num_prods_index] for tup in top_avg_price_sellers]
+        , width=0.4 ,color='red')
+    ax1_prime.set_ylabel('Number of products', color='red')
+    ax1_prime.set_yticks(np.arange(0,13000,1000))
+
+    # plot num of prods bar chart
+    labels2 = np.arange(len([tup[0] for tup in top_num_prods_sellers]))
+    ax2.bar(labels2 - 0.2,
+        [tup[avg_price_index] for tup in top_num_prods_sellers], width=0.4, color='blue')
+    ax2.set_ylabel('Average price (USD)', color='blue')
+    ax2.set_xlabel('Store')
+    ax2.set_xticks(labels2, [tup[0] for tup in top_num_prods_sellers])
+    # ax2.set_xticklabels(labels2)
+    ax2.set_title('Top 10 stores according to the total number of sold items')
+    ax2.set_yticks(np.arange(0,525,25))
+    
+
+    # second y-axis for average price
+    ax2_prime = ax2.twinx()
+    ax2_prime.bar(labels2 + 0.2, [tup[num_prods_index] for tup in top_num_prods_sellers],
+        width=0.4 ,color='red')
+    ax2_prime.set_ylabel('Number of products', color='red')
+    ax2_prime.set_yticks(np.arange(0,13000,1000))
 
     plt.show()
 
 def main():
     # plot_price_histogram()
     # plot_med_price_timeseries()
-    plot_category_allocation()
+    # plot_category_allocation()
     # plot_cumprob_price()
-    plot_category_stat()
-    pass
+    # plot_category_stat()
+    # plot_top_average_price_seller()
+    plot_top_num_prods_seller()
+    # pass
 
 if __name__ == '__main__':
     main()

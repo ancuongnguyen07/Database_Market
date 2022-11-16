@@ -263,6 +263,34 @@ def save_leaked_websites(web_list):
         for web in web_list:
             fp.write(f'{web}\n')
 
+def leads_over_email(json_data):
+    '''Explore allocation of leads email over all general compromised email'''
+    leads = []
+    emails = 0
+    for entry in json_data:
+        if entry['category'] == 'Email':
+            list_of_prices = entry['prices']
+            emails += len(list_of_prices)
+            if 'lead' in entry['product'].lower():
+                leads.extend(list_of_prices)
+    return len(leads), len(leads) / emails, np.mean(leads)
+
+def generate_leads_email_stat(json_data):
+    leads, leads_prob, avg_price = leads_over_email(json_data)
+    print(f'Number of lead emails: {leads}')
+    print(f'Probability of genearl emails: {leads_prob*100}')
+    print(f'Average price of leads: {avg_price:.2f} USD')
+
+def top_field_seller(json_data, field, n=10):
+    '''return top n seller according to the given field in descending order.
+    The given field here means the index of a tuple (seller,num_of_prods,min,max,avg,median)
+    '''
+    seller_stat = seller_analysis(json_data)
+    assert field < len(seller_stat[0]) and field >= 0, 'invalid index of seller_stat'
+    sorted_stat = list(sorted(seller_stat, key=lambda x:x[field], reverse=True))
+
+    return sorted_stat[:n]
+
 def main():
     json_data = read_json_file(JSON_FILE)
     # top_seller = get_top_seller(json_data)
@@ -271,10 +299,12 @@ def main():
 
     # seller_stat = seller_analysis(json_data)
     # save_seller_stat(seller_stat)
-    save_category_statistic(extract_type_of_product(json_data))
+    # save_category_statistic(extract_type_of_product(json_data))
     # save_dataset_stats(dataset_statistic(json_data))
 
     # save_leaked_websites(extract_website(json_data))
+
+    # generate_leads_email_stat(json_data)
 
 if __name__ == '__main__':
     main()

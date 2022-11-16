@@ -92,7 +92,7 @@ def get_category_from_title(prod_info):
         return 'Personal Data'
     elif any(keyword in prod_info for keyword in ['.','hotel']):
         return 'Online Account'
-    elif any(keyword in prod_info for keyword in ['email','e-mail']):
+    elif any(keyword in prod_info for keyword in ['email','e-mail','lead']):
         return 'Email'
     elif any(keyword in prod_info for keyword in ['credit card','vcc']):
         return 'Credit card'
