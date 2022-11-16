@@ -1,3 +1,4 @@
+
 In this section, I will provide logical explaination and statistical results,
 illustrated as figures or tables, to address research questions mentioned in
 \autoref{sec:research_questions}.
@@ -13,16 +14,17 @@ from \(0,36\%\) to \(3,45\%\). Detailed description of each product type is in
 
 \begin{table}
     \centering
-    \begin{tabular}{|c|c|}
+    \begin{tabularx}{\textwidth}{lX}
         \hline
         Product type & Description\\
+        \hline
         Personal Data & Full name, date of birth, social security number, home
         address, zip code, driver license, employer info, etc.\\
-        Online Account & online account of services such as Netflix, Amazon,
+        Online Account & Online account of services such as Netflix, Amazon,
         Venmo, Booking.com, etc.\\
         Bank Account & Username/password of online bank accounts, and credential
         information linked to bank accounts.\\
-        Credit Card & card holder name, \acrshort{cvv}, full name, address,
+        Credit Card & Card holder name, \acrshort{cvv}, full name, address,
         bank name, card type.\\
         Passport & Real photos and scan of passports.\\
         Email & Emails leaked through data breaches.\\
@@ -37,7 +39,7 @@ from \(0,36\%\) to \(3,45\%\). Detailed description of each product type is in
         to other computers over the network connection~\cite{web:rdp_wiki}.\\
         Other & Tutorials, digital document templates, document forms, domains, etc.\\
         \hline
-    \end{tabular}
+    \end{tabularx}
     \caption{Description of product types.}\label{tab:category_description}
 \end{table}
 
@@ -74,17 +76,19 @@ in attacking campaigns that either trick victims to provide more their own perso
 data or unauthorizedly access others account owned by the same user.
 
 \begin{table}
-    \begin{tabular}{|c|c|c|}
+    \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
         Name of service & Year & Number of victims\\
+        \hline
         Capital One & 2019 & 100 million Americans and 6 million Canadians\\
         Yahoo & 2013, 2014 & 3 billion, 500 million\\
         Marriott International & 2018 & 500 million\\
         First American Financial & 2019 & 885 million\\
         Facebook & 2019 & 540 million\\
-        [24]7.ai --- Bestbuy, Sears, Delta & 2017 & Sears: 100000, Delta: several hundred
-        thoudsands, Bestbuy: ``a small fraction of online customers'' 
-    \end{tabular}
+        % \[[24]\]7.ai --- Bestbuy, Sears, Delta & 2017 & Sears: 100000, Delta: several hundred
+        % thoudsands, Bestbuy: ``a small fraction of online customers''
+        \hline
+    \end{tabularx}
     \caption{List of major data breaches~\cite{web:best_buy_breach,web:capital_one_breach,
     web:personal_info_darkweb}.}\label{tab:data_breaches}
 \end{table}

@@ -1,15 +1,15 @@
 \begin{filecontents*}[overwrite]{category_stat.csv}
-    Category,Number of products,Average price
-    Personal Data,36963,8.71
-    Online Account,9539,13.88
-    Other,1855,68.54
-    Bank Identity Number,1368,9.24
-    Bank Account,1266,48.49
-    Email,1102,158.50
-    Credit card,892,11.00
-    Remote Desktop Protocol,446,10.85
-    Lookup Service,192,33.30
-    Passport,192,14.94
+Category,Number of products,Average price
+Personal Data,36963,8.71
+Online Account,9539,13.88
+Other,1855,68.54
+Bank Identity Number,1368,9.24
+Bank Account,1266,48.49
+Email,1102,158.50
+Credit card,892,11.00
+Remote Desktop Protocol,446,10.85
+Lookup Service,192,33.30
+Passport,192,14.94
 \end{filecontents*}
 
 \begin{filecontents*}[overwrite]{store_stat.csv}
@@ -46,15 +46,15 @@ Spamking,7,1,7.0,7.0,7.0,7.0
 Bloody,3,1,150.0,200.0,183.33,200.0
 \end{filecontents*}
 
-\begin{table*}[]
-    \centering
-    \csvreader[tabular =|c|c|c|c|,
-    table head=\hline Category & Amount of products & Average price\\\hline,
-    late after line=\\\hline]%
-    {category_stat.csv}{Category=\cate, products=\amount, avg_price=\avg}%
-    {\cate\ & \amount\ & \avg}%
-    \caption{Amount of products and average price of product categories.}\label{tab:category_stat}
-\end{table*}
+% \begin{table*}[]
+%     \centering
+%     \csvreader[tabular =|c|c|c|c|,
+%     table head=\hline Category & Amount of products & Average price\\\hline,
+%     late after line=\\\hline]%
+%     {category_stat.csv}{Category=\cate, products=\amount, avg_price=\avg}%
+%     {\cate\ & \amount\ & \avg}%
+%     \caption{Amount of products and average price of product categories.}\label{tab:category_stat}
+% \end{table*}
 
 % \begin{table*}[]
 %     \centering
