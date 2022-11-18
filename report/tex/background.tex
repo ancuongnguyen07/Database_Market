@@ -1,0 +1,89 @@
+In this section, I will describe theoretical concepts: Tor network, Onion service,
+Monetary system, Dark marketplace.
+
+% Tor network
+\subsection{Tor network}
+Tor is the second generation of onion routing system that addresses shortcomings
+in the original design by adding perfect forward secrecy, congestion control,
+directory servers, integrity checking, configurable exit policies, and a
+practical design for location-hidden services through rendzvous points
+~\cite{paper:tor_design}. Tor is a low-latency network system, which means that
+the period of delaying is negligible for most users~\cite{report:overview_tor}.
+This advantage makes Tor as a
+suitable design for interactive tasks like web browsing or \acrshort{ssh}
+connections~\cite{dis:usage_of_onion_services}. In addtion to the fast performance,
+Tor communication service also provides the high degree of anonymity and privacy
+in transferring network packets. Hence, Tor browser, a Firefox-based web browser
+under Tor network, is widely used by activists and journalists for untraceable
+communication. Moreover, ordinary citizens who have concerned their privacy during
+Internet surfing select Tor-based applications as safe guards in the ungovernable
+Internet environment.
+
+The Tor users are protected by the common method of Internet surveillance, traffic
+analysis. The source and destination of Internet communication can be exposed by
+traffic analysis. These information reveal users' behaviour and interest~\cite{web:onion_network}.
+To reduce the risk of traffic analysis, Tor distribute the connection between the
+client and the final point over the chain of 3 Tor nodes, called \emph{relays}.
+The circuit of encrypted connection over relays is described as the following steps.
+% How does Tor anonymously route packets
+\begin{enumerate}
+    \item The Tor user obtains a list of Tor nodes from a
+    directory server. Then public keys of selected relays are used to encrypt and
+    encapsulate the network packet.  
+    \item The Tor client connects to the guard relay, the first relay in the circuit
+    of three Tor nodes. The encapsulated message is delivered to the guard relay.
+    \item The guard relay decrypts the packet, using its private key, 
+    and forward to the second node, the middle relay.
+    \item The second node continues decrypting, using its private key, and then
+    forwarding the message to the third node, the exit relay.
+    \item The exit relay decrypts, using its private key, and forward the packet
+    to the final destination, e.g, a web server.
+\end{enumerate}
+
+As shown in the aforementioned steps, a specific Tor relay only knows about the previous
+sender and the next recipient. For example, the guard relay only learns about the Tor client
+and the second hop, but not the final recipient. Thus, a complete path from the original
+sender to the final destination is not exposed.
+
+At each hop, the packet is decapsulated and decrypted by using private key of each relay,
+``peeling off'' each encryption layer. It is similar to layers of onion and that is also
+the reason why it is called \emph{onion routing}.
+
+Although the traffic correlation attack is unavoidable in any low-latency anonymity
+network, it is challenging to perform global traffic analysis due to the huge amount
+of Tor users~\cite{dis:anonymity_system,paper:tor_design}. In addition to traffic and
+time analysis, there are other techniques that reveal real identity of Tor users
+~\cite{paper:de_tor}.
+
+There are several types of routers, or relays, in the Tor network and soem of them
+are aforementioned, including guard, middle, and exit. Since the exit relay communicates
+publicly, outside the Tor network, to the destination, the IP address of it is exposed.
+Moreover, the sender can also know the IP address of the first relay in the circuit of
+three Tor routers.
+By blocklisting the IP addresses of theses publicly known relays, many governments block
+connections from their citizens to the Tor network. To address this problem, the bridge
+node which is not listed in the public Tor directory is introduced. Thus, it is difficult
+to block an IP address if it is not publicly known. However, several countries have
+found means to detect and block connections to Tor bridges. Pluggable transport, a
+special kind of bridge, is discovered address this problem by adding an extra layer
+of obfuscation~\cite{web:relay_types}. According to \url{https://metrics.torproject.org},
+in 2021, there are around 7000 relays and more than 2000 bridges running in the Tor
+network.
+
+Tor enables TCP-based applications to acquire online anonymity without modification
+~\cite{paper:tor_design}. One of the popular Tor application is Tor browser. It is
+a modified version of Mozilla Firefox Extended Support Release (ESR) with most-strict
+security settings, such as NoScript and HTTPS Everywhere. This browser routes all
+traffic through the Tor network and removes all possible fingerprinting methods,
+including forging information about the operating system and hardwares~\cite{dis:usage_of_onion_services}.
+Furthermore, Tor Browser does not save sensitive data, including browsing history,
+cache and cookies~\cite{dis:usage_of_onion_services}.
+
+% Onion services
+\subsection{Onion service}
+
+% Monetary system
+\subsection{Monetary}
+
+% Black markeplace
+\subsection{Dark marketplace}
