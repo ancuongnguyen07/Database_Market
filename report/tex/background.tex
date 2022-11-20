@@ -75,12 +75,62 @@ Tor enables TCP-based applications to acquire online anonymity without modificat
 a modified version of Mozilla Firefox Extended Support Release (ESR) with most-strict
 security settings, such as NoScript and HTTPS Everywhere. This browser routes all
 traffic through the Tor network and removes all possible fingerprinting methods,
-including forging information about the operating system and hardwares~\cite{dis:usage_of_onion_services}.
+including forging information about the operating system and hardwares
+~\cite{dis:usage_of_onion_services}.
 Furthermore, Tor Browser does not save sensitive data, including browsing history,
 cache and cookies~\cite{dis:usage_of_onion_services}.
 
 % Onion services
 \subsection{Onion service}
+%
+Onion services, Tor hidden services, are an overlay network on top of TCP/IP;
+thus, IP addresses are not used in the protocol~\cite{web:onion_service}. The
+location and real IP address of Onion Service are protected, hidden from the
+user. These hidden services are only available through the Tor network~\cite{paper:tor_design}.
+Instead of IP address, onion service is indentified by the \emph{identity public key}.
+This onion address which is in the form of \emph{x.onion} whose the first part \emph{x} is
+the hash of public key of onion service, e.g, {\scriptsize \textbf{
+database6e2t4yvdsrbw3qq6votzyfzspaso7sjga2tchx6tov23nsid.onion}}~\cite{dis:usage_of_onion_services}.
+
+The onion service hides and protects itself by only allowing direct connections
+from three pre-selected Tor relays, \emph{introduction points}. Every Tor client
+and intermediary points have to be introduced by the three-hop circuit to reach
+the onion service.
+To be noticeable to clients, instead of using \gls{dns}, \gls{dht} is utilized
+to match a onion service to its corresponding introduction points.
+
+The onion service protocol is summarized in the following steps~\cite{paper:tor_design,
+web:onion_service}.
+\begin{enumerate}
+    \item The onion service selects three Tor relays acting as its introduction
+    points to build an anonymized circuit.
+    \item The onion service generates a \emph{descriptor}, containing a list of
+    introduction points, and signs this descriptor with the \emph{identity private
+    key}. The key used to signing is the private part of the identity public key
+    which is encoded in the onion service address.
+    \item Given the onion address, the client requests the signed descriptor from
+    from the \acrshort{dht}. Next, the client verify the signature of returned
+    descriptor with the public key that is encoded in the onion address.
+    \item The client randomly selects a Tor relay acting as a rendezvous point,
+    build anonymized, three-hop circuit to it and send it an one-time secret.
+    \item The generated one-time secret and the address of the rendezvous point
+    are encrypted with the public key of the onion service and delivered to one of
+    the introduction points through a anonymized circuit.
+    \item The onion service decrypts and retrieve the rendezvous point and one-time
+    secret. It connects and sends the one-time secret to the rendezvous point via
+    a three-hop circuit.
+    \item A complete circuit between the client and the onion service is built.
+    It contains total five Tor relays, two from the client to the rendezvous point
+    and three from the rendezvous point to the onion service. 
+\end{enumerate}
+
+The onion service protocol provides both end-to-end encryption and authentication
+~\cite{web:onion_service}. Hence, it is impossible to censor onion services
+and \gls{mitm} is prevented~\cite{dis:usage_of_onion_services}. As onion service
+can publish contents anonymously, some of them are the sources of adverse content,
+including illegal traded products, images of child abusing, etc. However, many onion services
+share content supporting human rights, meaningful for journalism and publishing
+content that is censored by oppressive governments~\cite{dis:usage_of_onion_services}. 
 
 % Monetary system
 \subsection{Monetary}
