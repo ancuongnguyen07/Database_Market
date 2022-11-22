@@ -7,6 +7,7 @@
 \usepackage[l3]{csvsimple}
 \usepackage{glossaries}
 \usepackage{tabularx}
+\usepackage{pdflscape}
 \graphicspath{ {./figures/} }
 
 % reference-managing package
@@ -17,53 +18,56 @@
 \author{Cuong Nguyen}
 \date{22/04/2022}
 
-\makeglossaries{}
-\loadglsentries{tex/glossary.tex}
+\makenoidxglossaries{}
+\setacronymstyle{long-short}
 
+\loadglsentries{tex/glossary.tex}
 
 \begin{document}
     
 \maketitle
 
 \tableofcontents
-\pagebreak
+\clearpage
 
-\printglossary{}
-\pagebreak
+\printnoidxglossaries{}
+
+% \bibliography{your_bib_archive}
+\clearpage
 
 \section{Abstract}\label{sec:abstract}
 \input{tex/abstract.tex}
-\pagebreak
+\clearpage
 
 \section{Background}\label{sec:background}
 \input{tex/background.tex}
-\pagebreak
+\clearpage
 
 \section{Research questions}\label{sec:research_questions}
 \input{tex/research_question.tex}
-\pagebreak
+\clearpage
 
 \section{Methodology}\label{sec:method}
 \input{tex/methodology.tex}
-\pagebreak
+\clearpage
 
 \section{Results}\label{sec:result}
 \input{tex/result.tex}
-\pagebreak
+\clearpage
 
 \section{Conclusions}\label{sec:conclusion}
 \input{tex/conclusion.tex}
-\pagebreak
+\clearpage
 
-\printbibliography{}
-\pagebreak
+\printbibliography[heading=bibintoc]
+\clearpage
 
-\appendix
-\section{Tables of statistic results of stores and item categories}
-\input{tex/appendix.tex}
-\pagebreak
+\begin{appendices}
+    \section{Tables of statistic results of stores and item categories}
+    \input{tex/appendix.tex}
 
-\section{Screenshots of Database marketplace}
-\input{tex/appendix_screenshots.tex}
+    \section{Screenshots of Database marketplace}
+    \input{tex/appendix_screenshots.tex}
+\end{appendices}
 
 \end{document}

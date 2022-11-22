@@ -1,69 +1,73 @@
 \begin{filecontents*}[overwrite]{category_stat.csv}
-Category,Number of products,Average price
-Personal Data,36963,8.71
-Online Account,9539,13.88
-Other,1855,68.54
-Bank Identity Number,1368,9.24
-Bank Account,1266,48.49
-Email,1102,158.50
-Credit card,892,11.00
-Remote Desktop Protocol,446,10.85
-Lookup Service,192,33.30
-Passport,192,14.94
+    Category,Number of products,Average price
+    Personal Data,36963,8.71
+    Online Account,9539,13.88
+    Other,1855,68.54
+    Bank Identity Number,1368,9.24
+    Bank Account,1266,48.49
+    Email,1102,158.50
+    Credit card,892,11.00
+    Remote Desktop Protocol,446,10.85
+    Lookup Service,192,33.30
+    Passport,192,14.94
 \end{filecontents*}
 
 \begin{filecontents*}[overwrite]{store_stat.csv}
-seller,num_prods,type_range,min_price,max_price,avg_price,med_price
-Goldmaster,11882,4,1.0,2500.0,12.24,3.0
-SmanShop,4614,1,1.0,35.0,5.24,5.0
-JOKER*,1700,5,1.0,500.0,13.72,6.0
-Goodnik7,1505,2,1.0,15.0,5.06,7.0
-Mikasa,3811,5,1.0,200.0,8.22,5.0
-PINK MAN,1850,4,1.0,1000.0,14.35,5.0
-DANTE,2644,3,0.5,490.0,8.38,3.0
-Dark Shop,1444,6,1.0,350.0,6.5,1.0
-LACOSTE,2124,4,1.0,500.0,8.23,8.0
-IMMORTAL,4484,7,0.5,1600.0,14.48,7.0
-Radikula Store,776,4,0.5,350.0,13.41,6.0
-C_Reative,2569,5,1.0,2000.0,13.13,10.0
-Hurricane,1254,6,0.5,700.0,7.83,4.0
-FULL INFO,3550,2,1.0,80.0,3.74,4.0
-D.B. Cooper,441,3,1.0,300.0,19.04,5.0
-QuestionMark,857,3,1.0,650.0,26.45,5.0
-*NERO*,1229,4,1.0,1000.0,12.81,1.0
-Carsh,92,2,3.5,75.0,10.14,3.5
-makataO,833,2,1.0,1000.0,10.51,1.0
-The Best Banks,641,5,0.5,80.0,11.12,10.0
-bussman shop,9,1,80.0,1200.0,430.0,150.0
-DUTY FREE,229,5,2.0,250.0,62.47,10.0
-PHILO STORE,770,7,1.0,550.0,122.22,18.0
-Ninja Secret's,421,4,7.0,50.0,8.8,7.0
-BANKBOSS,2583,6,1.0,670.0,16.64,10.0
-Aqua Man,590,5,0.2,1900.0,310.68,15.0
-PROMETHEUS,315,3,1.0,60.0,6.62,1.0
-BestLink,588,4,3.0,250.0,10.21,6.0
-Spamking,7,1,7.0,7.0,7.0,7.0
-Bloody,3,1,150.0,200.0,183.33,200.0
+    seller,num of prods,type range,min price,max price,avg price,med price
+    Goldmaster,11882,4,1.0,2500.0,12.24,3.0
+    SmanShop,4614,1,1.0,35.0,5.24,5.0
+    JOKER,1700,5,1.0,500.0,13.72,6.0
+    Goodnik7,1505,2,1.0,15.0,5.06,7.0
+    Mikasa,3811,5,1.0,200.0,8.22,5.0
+    PINK MAN,1850,4,1.0,1000.0,14.35,5.0
+    DANTE,2644,3,0.5,490.0,8.38,3.0
+    Dark Shop,1444,6,1.0,350.0,6.5,1.0
+    LACOSTE,2124,4,1.0,500.0,8.23,8.0
+    IMMORTAL,4484,7,0.5,1600.0,14.48,7.0
+    Radikula Store,776,4,0.5,350.0,13.41,6.0
+    C\_Reative,2569,5,1.0,2000.0,13.13,10.0
+    Hurricane,1254,6,0.5,700.0,7.83,4.0
+    FULL INFO,3550,2,1.0,80.0,3.74,4.0
+    D.B. Cooper,441,3,1.0,300.0,19.04,5.0
+    QuestionMark,857,3,1.0,650.0,26.45,5.0
+    NERO,1229,4,1.0,1000.0,12.81,1.0
+    Carsh,92,2,3.5,75.0,10.14,3.5
+    makataO,833,2,1.0,1000.0,10.51,1.0
+    The Best Banks,641,5,0.5,80.0,11.12,10.0
+    bussman shop,9,1,80.0,1200.0,430.0,150.0
+    DUTY FREE,229,5,2.0,250.0,62.47,10.0
+    PHILO STORE,770,7,1.0,550.0,122.22,18.0
+    Ninja Secret's,421,4,7.0,50.0,8.8,7.0
+    BANKBOSS,2583,6,1.0,670.0,16.64,10.0
+    Aqua Man,590,5,0.2,1900.0,310.68,15.0
+    PROMETHEUS,315,3,1.0,60.0,6.62,1.0
+    BestLink,588,4,3.0,250.0,10.21,6.0
+    Spamking,7,1,7.0,7.0,7.0,7.0
+    Bloody,3,1,150.0,200.0,183.33,200.0
 \end{filecontents*}
 
-% \begin{table*}[]
-%     \centering
-%     \csvreader[tabular =|c|c|c|c|,
-%     table head=\hline Category & Amount of products & Average price\\\hline,
-%     late after line=\\\hline]%
-%     {category_stat.csv}{Category=\cate, products=\amount, avg_price=\avg}%
-%     {\cate\ & \amount\ & \avg}%
-%     \caption{Amount of products and average price of product categories.}\label{tab:category_stat}
-% \end{table*}
+\begin{table*}[h!]
+    \centering
+    \csvreader[tabular =|c|c|c|c|,
+    table head=\hline Category & Amount of products & Average price\\\hline,
+    late after line=\\\hline]%
+    {category_stat.csv}{Category=\cate, Number of products=\amount, Average price=\avg}%
+    {\cate\ & \amount\ & \avg}%
+    \caption{Amount of products and average price of product categories. The currency of price is USD.}
+    \label{tab:category_stat}
+\end{table*}
 
-% \begin{table*}[]
-%     \centering
-%     \csvreader[tabular =|c|c|c|c|c|c|c|,
-%     table head=\hline Store & Amount of products & Range of types & Min price &
-%     Max price & Average pirce & Median price\\\hline,
-%     late after line=\\\hline]%
-%     {store_stat.csv}{seller=\seller,num_prods=\numProds,type_range=\range,
-%     min_price=\minimumPrice,max_price=\price,avg_price=\avgPrice,med_price=\medPrice}%
-%     {\seller{} & \numProds{} & \range{} & \minimumPrice{} & \price{} & \avgPrice{} & \medPrice}%
-%     \caption{Statistical results of stores.}\label{tab:store_stat}
-% \end{table*}
+\begin{landscape}
+    \begin{table*}[]
+        \centering
+        \csvreader[tabular =|c|c|c|c|c|c|c|,
+        table head=\hline Store & Amount of products & Range of types & Min price &
+        Max price & Average pirce & Median price\\\hline,
+        late after line=\\\hline]%
+        {store_stat.csv}{seller=\a,num of prods=\b,type range=\c,
+        min price=\d,max price=\e,avg price=\f,med price=\g}%
+        {\a\ & \b\ & \c\ & \d\ & \e\ & \f\ & \g}%
+        \caption{Statistical results of stores. The currency of price is USD.}
+        \label{tab:store_stat}
+    \end{table*}
+\end{landscape}
