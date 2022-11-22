@@ -1,5 +1,5 @@
 In this section, I will describe theoretical concepts: Tor network, Onion service,
-Monetary system, Dark marketplace.
+Cryptocurrency, Dark marketplace.
 
 % Tor network
 \subsection{Tor network}
@@ -15,7 +15,7 @@ connections~\cite{dis:usage_of_onion_services}. In addtion to the fast performan
 Tor communication service also provides the high degree of anonymity and privacy
 in transferring network packets. Hence, Tor browser, a Firefox-based web browser
 under Tor network, is widely used by activists and journalists for untraceable
-communication. Moreover, ordinary citizens who have concerned their privacy during
+communication~\cite{dis:usage_of_onion_services}. Moreover, ordinary citizens who have concerned their privacy during
 Internet surfing select Tor-based applications as safe guards in the ungovernable
 Internet environment.
 
@@ -99,8 +99,7 @@ the onion service.
 To be noticeable to clients, instead of using \gls{dns}, \gls{dht} is utilized
 to match a onion service to its corresponding introduction points.
 
-The onion service protocol is summarized in the following steps~\cite{paper:tor_design,
-web:onion_service}.
+The onion service protocol is summarized in the following steps~\cite{paper:tor_design}.
 \begin{enumerate}
     \item The onion service selects three Tor relays acting as its introduction
     points to build an anonymized circuit.
@@ -126,14 +125,98 @@ web:onion_service}.
 
 The onion service protocol provides both end-to-end encryption and authentication
 ~\cite{web:onion_service}. Hence, it is impossible to censor onion services
-and \gls{mitm} is prevented~\cite{dis:usage_of_onion_services}. As onion service
+and \gls{mitm} attack is prevented~\cite{dis:usage_of_onion_services}. As onion service
 can publish contents anonymously, some of them are the sources of adverse content,
-including illegal traded products, images of child abusing, etc. However, many onion services
+including illegal traded products, images of child abusing, etc~\cite{dis:usage_of_onion_services}.
+However, many onion services
 share content supporting human rights, meaningful for journalism and publishing
 content that is censored by oppressive governments~\cite{dis:usage_of_onion_services}. 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
+    {screenshots/bbc_onion.png}
+    \caption{Onion service mirroring BBC news website on Tor network.}
+    \label{fig:onion_service}
+\end{figure}
+
 % Monetary system
-\subsection{Monetary}
+\subsection{Cryptocurrency}
+%
+Onion service provides location hiding capacity and anonymity in content publishing
+for illegal markeplaces. However, they also need a payment system that is untraceable and secure,
+which is impossible to know exactly involving parties. Hence, the creation of pseudonymous
+unregulated electronic money leads to the increasing number of illegal marketplaces
+is formed~\cite{dis:usage_of_onion_services}.
+
+In 2009, someone who has pseudo name Satoshi Nakamoto created the peer-to-peer digital
+cash system~\cite{misc:bitcoin_origin}. This electronic money, widely known as Bitcoin,
+is the first distributed digital currency that works without a trusted third party
+~\cite{dis:usage_of_onion_services,misc:bitcoin_origin}. Bitcoin operates based on
+cryptographic proof instead of trust, trading directly between users~\cite{misc:bitcoin_origin}.
+Several security mechanism, including hash checksums and proof-of-work, are implemented
+to protect users from transaction spoofing~\cite{dis:usage_of_onion_services}.
+
+The amount of bitcoins is limited, 21 million bitcoins; thus, its price depends on
+the continuos demand to exchange this currency among its netowrk or to other
+currencies~\cite{misc:bitcoin_origin,dis:usage_of_onion_services,paper:bitcoin_finance}.
+
+Although Bitcoin system does not provide high degree of technical anonymity, it is
+widely used as the main method of payment in illegal commerce website hosted in
+the Tor network~\cite{dis:usage_of_onion_services}. In addition to Bitcoin, there
+are several cryptocurrencies, including Monero, Zcash, Litecoin, etc., that are
+utilized for trading in Tor-based marketplaces.
 
 % Black markeplace
 \subsection{Dark marketplace}
+%
+Silk Road, a dark marketplace, is an ideal case to study the impact of anonymous
+online communication on the transformation of crime, from offline to online
+environment~\cite{paper:ebay_drugs_22}. With the support of identity-hidden
+services, illegal trade is significantly expanded. There are two essential
+components of a dark marketplace~\cite{dis:usage_of_onion_services}:
+
+\begin{enumerate}
+    \item A network that provides high degree of anonymity whose the market website
+    is hosted.
+    \item A payment system that is not only secure but also exhaustively to trace
+    involving parties.
+\end{enumerate}
+
+Silk Road was the first combination of these components~\cite{dis:usage_of_onion_services}.
+In this online market, users --- buyers and sellers --- have their own Bitcoin wallers
+~\cite{report:surfing_silk_road_23}.
+An \emph{escrow system} that charges a commission fee to the market site and locks
+the payment between a buyer and a store~\cite{report:surfing_silk_road_23}. In addition,
+a reputation system is introduced to motivate the vendors sell products matching
+their advertisements. When a buyer receive a product, if the buyer is happy with
+the product, the payment is transferred to the vendor. Otherwise, if the buyer
+does not satisfy, the buyer can send a complaint ticket and the market site resolves
+the conflict between the buyer and the seller~\cite{report:surfing_silk_road_23}.
+The buyer can give feedbacks that is publicly visible for other buyers, making
+the reputation system is important for both buyers and sellers~\cite{paper:reputation_sys_79}.
+
+Several academic papers are published researching different sides of Silk Road~\cite{paper:ebay_drugs_22,
+report:surfing_silk_road_23,dis:anonymity_system}. It is studied that Silk Road was
+a profitable marketplace which trades millions of USD values of illegal drugs per month
+~\cite{report:evaluate_Silk_Road_75}.
+
+These kind of black marketplaces operate based on the financial motivation and
+the increasing demand of customers. In addition to Silk Road, was shut down in 2013,
+there are around 20 different dark marketplaces which are observed huge traffic
+~\cite{dis:usage_of_onion_services}. These marketplace can be considered as an
+illegal version of Ebay with additional cryptocurrency payment systems, escrow
+systems, and reputation systems~\cite{dis:usage_of_onion_services}.
+
+In this study, Database marketplace, also a black marketplace, is examined.
+Unlike Silk Road or its variants, whose main products are illegal drugs,
+Database market mainly provides personal data --- full name, \acrshort{dob},
+\acrshort{ssn}, etc. --- and banking information serving for illicit activities.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
+    {screenshots/database_market_onion_service.png}
+    \caption{Homepage of Database marketplace onion service hosted on Tor network.}
+    \label{fig:database_homepage}
+\end{figure}
