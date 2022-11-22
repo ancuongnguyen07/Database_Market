@@ -239,6 +239,8 @@ def create_master_file():
     save_into_json('../analysis_result/product_pages.json',full_features_list)
 
 def main():
+    # create a folder storing result files
+    os.system('mkdir ../analysis_result')
     create_master_file()
     # test()
 

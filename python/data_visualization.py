@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
 import data_analysis as da
 import numpy as np
+import os
 
 MASTER_JSON_PATH = '../analysis_result/product_pages.json'
 CATEGORY_STAT_PATH = '../analysis_result/category_stat.csv'
+BASE_PATH = '../analysis_result/figures'
 
 def plot_price_histogram():
     '''Plot the occurence of each products' price in the whole dataset'''
@@ -18,7 +20,7 @@ def plot_price_histogram():
     plt.ylabel('Frequency')
     plt.xscale('log')
 
-    plt.show()
+    plt.savefig(f'{BASE_PATH}/price_histogram.png')
 
 def plot_avg_price_timeseries():
     '''
@@ -36,7 +38,7 @@ def plot_avg_price_timeseries():
     plt.xlabel('Month')
     plt.xticks(rotation=45, ha='right')
 
-    plt.show()
+    plt.savefig(f'{BASE_PATH}/avg_price_timeseries.png')
 
 def plot_med_price_timeseries():
     '''
@@ -54,7 +56,7 @@ def plot_med_price_timeseries():
     plt.xlabel('Month')
     plt.xticks(rotation=45, ha='right')
 
-    plt.show()
+    plt.savefig(f'{BASE_PATH}/med_price_timeseries.png')
 
 def plot_category_allocation():
     json_data = da.read_json_file(MASTER_JSON_PATH)
@@ -73,7 +75,7 @@ def plot_category_allocation():
     plt.figure()
     plt.pie(list_of_allocation,autopct='%1.2f%%',colors=my_colors)
     plt.legend(list_of_categories)
-    plt.show()
+    plt.savefig(f'{BASE_PATH}/category_allocation.png')
 
 def plot_cumprob_price():
     '''Plot the cumulative frequency of each price in the ascending
@@ -88,7 +90,7 @@ def plot_cumprob_price():
     plt.ylabel('Cumulative probability (%)')
     plt.yticks(np.arange(0,110,10))
     plt.xticks(np.arange(0,55,5))
-    plt.show()
+    plt.savefig(f'{BASE_PATH}/cumprob_price.png')
 
 def tuplelize_category_stat(file_path):
     '''Retrieve stat from the CSV file to a list of tuples
@@ -130,7 +132,7 @@ def plot_category_stat():
     ax2.set_ylabel('Average price (USD)', color='blue')
     # ax2.set_yticks(np.arange(0,130,10))
 
-    plt.show()
+    plt.savefig(f'{BASE_PATH}/category_stat.png')
 
 def plot_top_average_price_seller():
     json_data = da.read_json_file(MASTER_JSON_PATH)
@@ -146,7 +148,8 @@ def plot_top_average_price_seller():
     plt.xlabel('Store')
     plt.xticks(rotation=45, ha='right')
     plt.yticks(np.arange(0,550,50))
-    plt.show()
+    
+    plt.savefig(f'{BASE_PATH}/top_average_price_seller.png')
 
 def plot_top_num_prods_seller():
     json_data = da.read_json_file(MASTER_JSON_PATH)
@@ -197,15 +200,17 @@ def plot_top_num_prods_seller():
     ax2_prime.set_ylabel('Number of products', color='red')
     ax2_prime.set_yticks(np.arange(0,13000,1000))
 
-    plt.show()
+    plt.savefig(f'{BASE_PATH}/top_avg_price_num_prods_seller.png')
 
 def main():
-    # plot_price_histogram()
-    # plot_med_price_timeseries()
-    # plot_category_allocation()
-    # plot_cumprob_price()
-    # plot_category_stat()
-    # plot_top_average_price_seller()
+    # create a folder storing result files
+    os.system(f'mkdir {BASE_PATH}')
+    plot_price_histogram()
+    plot_med_price_timeseries()
+    plot_category_allocation()
+    plot_cumprob_price()
+    plot_category_stat()
+    plot_top_average_price_seller()
     plot_top_num_prods_seller()
     # pass
 
