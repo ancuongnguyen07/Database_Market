@@ -1,6 +1,0 @@
-Total number of items: 53815
-Maximum price: 2500.00 USD
-Minimum price: 0.20 USD
-Average price: 15.87 USD
-Median price: 5.00 USD
-Total number of sellers: 30
