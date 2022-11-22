@@ -9,7 +9,7 @@ OPT= --interaction=nonstopmode
 all: $(DIR_BUILD)/$(MAIN).pdf
 
 $(DIR_BUILD)/$(MAIN).pdf: $(TEXSRC) $(BIBSRC)
-	latexmk -pdf -pvc -pdflatex="pdflatex $(OPT)" $(MAIN) -auxdir=$(DIR_BUILD) -outdir=$(DIR_BUILD)
+	latexmk -pdf -pdflatex="texfot pdflatex" $(MAIN) -auxdir=$(DIR_BUILD) -outdir=$(DIR_BUILD)
 
 clean:
 	rm -f $(DIR_BUILD)/*
