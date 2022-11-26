@@ -3,7 +3,7 @@
 import json
 import numpy as np
 from collections import Counter
-import re, requests
+import re, os
 
 JSON_FILE = '../analysis_result/product_pages.json'
 
@@ -292,19 +292,23 @@ def top_field_seller(json_data, field, n=10):
     return sorted_stat[:n]
 
 def main():
+    try:
+        os.makedirs(os.path.join('..','analysis_result'))
+    except OSError as error:
+        pass
     json_data = read_json_file(JSON_FILE)
-    # top_seller = get_top_seller(json_data)
+    top_seller = get_top_seller(json_data)
     # print(top_seller)
     # pass
 
-    # seller_stat = seller_analysis(json_data)
-    # save_seller_stat(seller_stat)
-    # save_category_statistic(extract_type_of_product(json_data))
-    # save_dataset_stats(dataset_statistic(json_data))
+    seller_stat = seller_analysis(json_data)
+    save_seller_stat(seller_stat)
+    save_category_statistic(extract_type_of_product(json_data))
+    save_dataset_stats(dataset_statistic(json_data))
 
-    # save_leaked_websites(extract_website(json_data))
+    save_leaked_websites(extract_website(json_data))
 
-    # generate_leads_email_stat(json_data)
+    generate_leads_email_stat(json_data)
 
 if __name__ == '__main__':
     main()

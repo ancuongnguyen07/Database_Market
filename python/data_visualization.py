@@ -204,7 +204,11 @@ def plot_top_num_prods_seller():
 
 def main():
     # create a folder storing result files
-    os.system(f'mkdir {BASE_PATH}')
+    try:
+        os.makedirs(os.path.join('..','analysis_result','figures'))
+    except OSError as error:
+        pass
+
     plot_price_histogram()
     plot_med_price_timeseries()
     plot_category_allocation()

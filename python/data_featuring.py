@@ -58,7 +58,9 @@ def skipping_criteria(text_str):
     text_lower = text_str.lower()
     if 'guide' in text_lower or 'botnet' in text_lower:
         return True
-    if not '$**' in text_str:
+    if not '$**' in text_lower:
+        return True
+    if 'lead' in text_lower:
         return True
 
 def skipping_pcs_criteria(line):
@@ -240,7 +242,10 @@ def create_master_file():
 
 def main():
     # create a folder storing result files
-    os.system('mkdir ../analysis_result')
+    try:
+        os.makedirs(os.path.join('..','analysis_result'))
+    except OSError as error:
+        pass
     create_master_file()
     # test()
 
