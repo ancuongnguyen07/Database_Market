@@ -3,6 +3,6 @@
 database/
 *.temp
 */__pycache__/
-*.pdf
 */tmp/
 *log.txt
+*/build/
