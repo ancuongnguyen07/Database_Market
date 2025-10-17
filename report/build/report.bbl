@@ -1,0 +1,659 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{paper:ebay_drugs_22}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ec82ba07aee63a9bbba354406afdd3f8}{%
+           family={BARRATT},
+           familyi={B\bibinitperiod},
+           given={MONICA\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec82ba07aee63a9bbba354406afdd3f8}
+      \strng{fullhash}{ec82ba07aee63a9bbba354406afdd3f8}
+      \strng{bibnamehash}{ec82ba07aee63a9bbba354406afdd3f8}
+      \strng{authorbibnamehash}{ec82ba07aee63a9bbba354406afdd3f8}
+      \strng{authornamehash}{ec82ba07aee63a9bbba354406afdd3f8}
+      \strng{authorfullhash}{ec82ba07aee63a9bbba354406afdd3f8}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Addiction}
+      \field{number}{3}
+      \field{title}{SILK ROAD: EBAY FOR DRUGS}
+      \field{volume}{107}
+      \field{year}{2012}
+      \field{pages}{683\bibrangedash 683}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1111/j.1360-0443.2011.03709.x
+      \endverb
+      \verb{eprint}
+      \verb https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1360-0443.2011.03709.x
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1360-0443.2011.03709.x
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1360-0443.2011.03709.x
+      \endverb
+      \keyw{Drug markets,illicit drugs,internet}
+    \endentry
+    \entry{web:capital_one_breach}{online}{}
+      \name{author}{1}{}{%
+        {{hash=152a67a19cac39acad5fd688a7e851d6}{%
+           family={Colby},
+           familyi={C\bibinitperiod},
+           given={Clifford},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{152a67a19cac39acad5fd688a7e851d6}
+      \strng{fullhash}{152a67a19cac39acad5fd688a7e851d6}
+      \strng{bibnamehash}{152a67a19cac39acad5fd688a7e851d6}
+      \strng{authorbibnamehash}{152a67a19cac39acad5fd688a7e851d6}
+      \strng{authornamehash}{152a67a19cac39acad5fd688a7e851d6}
+      \strng{authorfullhash}{152a67a19cac39acad5fd688a7e851d6}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Capital One data breach: What you can do now following bank hack}
+      \field{urlday}{16}
+      \field{urlmonth}{11}
+      \field{urlyear}{2022}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.cnet.com/tech/computing/capital-one-data-breach-what-you-can-do-now-following-bank-hack/
+      \endverb
+      \verb{url}
+      \verb https://www.cnet.com/tech/computing/capital-one-data-breach-what-you-can-do-now-following-bank-hack/
+      \endverb
+    \endentry
+    \entry{paper:tor_design}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=9c2faaae20084eaed8aa8df64e8339c7}{%
+           family={Dingledine},
+           familyi={D\bibinitperiod},
+           given={Roger},
+           giveni={R\bibinitperiod}}}%
+        {{hash=1ee2592c88d805ce30055d25a49a8327}{%
+           family={Mathewson},
+           familyi={M\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod}}}%
+        {{hash=ab5ed679e78db4d6fd5091d79c026cd3}{%
+           family={Syverson},
+           familyi={S\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {San Diego, CA}%
+      }
+      \list{publisher}{1}{%
+        {USENIX Association}%
+      }
+      \strng{namehash}{1f04bf1c60d75fb7a0e14cfc7d308350}
+      \strng{fullhash}{1f04bf1c60d75fb7a0e14cfc7d308350}
+      \strng{bibnamehash}{1f04bf1c60d75fb7a0e14cfc7d308350}
+      \strng{authorbibnamehash}{1f04bf1c60d75fb7a0e14cfc7d308350}
+      \strng{authornamehash}{1f04bf1c60d75fb7a0e14cfc7d308350}
+      \strng{authorfullhash}{1f04bf1c60d75fb7a0e14cfc7d308350}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 13th Conference on USENIX Security Symposium - Volume 13}
+      \field{series}{SSYM'04}
+      \field{title}{Tor: The Second-Generation Onion Router}
+      \field{year}{2004}
+      \field{pages}{21}
+      \range{pages}{1}
+    \endentry
+    \entry{report:evaluate_Silk_Road_75}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ef4db43ca4eca63acf09e7c56e709124}{%
+           family={Dolliver},
+           familyi={D\bibinitperiod},
+           given={Diana\bibnamedelima S},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier BV}%
+      }
+      \strng{namehash}{ef4db43ca4eca63acf09e7c56e709124}
+      \strng{fullhash}{ef4db43ca4eca63acf09e7c56e709124}
+      \strng{bibnamehash}{ef4db43ca4eca63acf09e7c56e709124}
+      \strng{authorbibnamehash}{ef4db43ca4eca63acf09e7c56e709124}
+      \strng{authornamehash}{ef4db43ca4eca63acf09e7c56e709124}
+      \strng{authorfullhash}{ef4db43ca4eca63acf09e7c56e709124}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Int. J. Drug Policy}
+      \field{month}{11}
+      \field{number}{11}
+      \field{title}{Evaluating drug trafficking on the Tor Network: Silk Road 2, the sequel}
+      \field{volume}{26}
+      \field{year}{2015}
+      \field{pages}{1113\bibrangedash 1123}
+      \range{pages}{11}
+      \keyw{Criminality; Drug trafficking; Silk Road 2; Tor Network}
+    \endentry
+    \entry{report:overview_tor}{report}{}
+      \name{author}{3}{}{%
+        {{hash=0e9ed423a3c34300cf2b1e3759295e04}{%
+           family={Emin},
+           familyi={E\bibinitperiod},
+           given={Caliskan},
+           giveni={C\bibinitperiod}}}%
+        {{hash=3cfbda6f86570ce4ae42edd1404635c5}{%
+           family={Tomasm},
+           familyi={T\bibinitperiod},
+           given={Minarik},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5c457bd28876425981b8826024ac4862}{%
+           family={Anna-Maria},
+           familyi={A\bibinithyphendelim M\bibinitperiod},
+           given={Osula},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {NATO Cooperative Cyber Defence Centre of Excellence}%
+      }
+      \strng{namehash}{7b29f487f12a56a0ab08692575906c06}
+      \strng{fullhash}{7b29f487f12a56a0ab08692575906c06}
+      \strng{bibnamehash}{7b29f487f12a56a0ab08692575906c06}
+      \strng{authorbibnamehash}{7b29f487f12a56a0ab08692575906c06}
+      \strng{authornamehash}{7b29f487f12a56a0ab08692575906c06}
+      \strng{authorfullhash}{7b29f487f12a56a0ab08692575906c06}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Technical and Legal Overview of the Tor Anonymity Network}
+      \field{type}{techreport}
+      \field{year}{2015}
+    \endentry
+    \entry{paper:bitcoin_finance}{article}{}
+      \name{author}{3}{}{%
+        {{hash=a123d102e6a94a0e1f6debd5a65fe807}{%
+           family={Foley},
+           familyi={F\bibinitperiod},
+           given={Sean},
+           giveni={S\bibinitperiod}}}%
+        {{hash=17cc86e4287f95dcaf0a1fecbc618ff0}{%
+           family={Karlsen},
+           familyi={K\bibinitperiod},
+           given={{Jonathan R.}},
+           giveni={J\bibinitperiod}}}%
+        {{hash=42c1cafdc0fbda1b475678b59ecc265a}{%
+           family={Putniņš},
+           familyi={P\bibinitperiod},
+           given={{Tālis J.}},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{d5fab19989b3ff0fd713df1444dbbbc7}
+      \strng{fullhash}{d5fab19989b3ff0fd713df1444dbbbc7}
+      \strng{bibnamehash}{d5fab19989b3ff0fd713df1444dbbbc7}
+      \strng{authorbibnamehash}{d5fab19989b3ff0fd713df1444dbbbc7}
+      \strng{authornamehash}{d5fab19989b3ff0fd713df1444dbbbc7}
+      \strng{authorfullhash}{d5fab19989b3ff0fd713df1444dbbbc7}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0893-9454}
+      \field{journaltitle}{Review of Financial Studies}
+      \field{month}{5}
+      \field{number}{5}
+      \field{title}{Sex, drugs, and Bitcoin: How much illegal activity is financed through cryptocurrencies?}
+      \field{volume}{32}
+      \field{year}{2019}
+      \field{pages}{1798\bibrangedash 1853}
+      \range{pages}{56}
+      \verb{doi}
+      \verb 10.1093/rfs/hhz015
+      \endverb
+    \endentry
+    \entry{paper:reputation_sys_79}{article}{}
+      \name{author}{2}{}{%
+        {{hash=aa5be5d5c0e91f9b7799768ac29c109a}{%
+           family={HARDY},
+           familyi={H\bibinitperiod},
+           given={ROBERT\bibnamedelima AUGUSTUS},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=fbd087ec147652ff844dc32f5a9ac3bc}{%
+           family={NORGAARD},
+           familyi={N\bibinitperiod},
+           given={JULIA\bibnamedelima R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{90602fca3284baa3ec919cf1057c6eca}
+      \strng{fullhash}{90602fca3284baa3ec919cf1057c6eca}
+      \strng{bibnamehash}{90602fca3284baa3ec919cf1057c6eca}
+      \strng{authorbibnamehash}{90602fca3284baa3ec919cf1057c6eca}
+      \strng{authornamehash}{90602fca3284baa3ec919cf1057c6eca}
+      \strng{authorfullhash}{90602fca3284baa3ec919cf1057c6eca}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Institutional Economics}
+      \field{number}{3}
+      \field{title}{Reputation in the Internet black market: an empirical and theoretical analysis of the Deep Web}
+      \field{volume}{12}
+      \field{year}{2016}
+      \field{pages}{515\bibrangedash 539}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.1017/S1744137415000454
+      \endverb
+    \endentry
+    \entry{web:best_buy_breach}{online}{}
+      \name{author}{1}{}{%
+        {{hash=4d310822108b259e9c13d4b57f5731f0}{%
+           family={Hollister},
+           familyi={H\bibinitperiod},
+           given={Sean},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{4d310822108b259e9c13d4b57f5731f0}
+      \strng{fullhash}{4d310822108b259e9c13d4b57f5731f0}
+      \strng{bibnamehash}{4d310822108b259e9c13d4b57f5731f0}
+      \strng{authorbibnamehash}{4d310822108b259e9c13d4b57f5731f0}
+      \strng{authornamehash}{4d310822108b259e9c13d4b57f5731f0}
+      \strng{authorfullhash}{4d310822108b259e9c13d4b57f5731f0}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Best Buy hit by [24]7.ai data breach, too}
+      \field{urlday}{9}
+      \field{urlmonth}{11}
+      \field{urlyear}{2022}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.cnet.com/news/privacy/best-buy-data-breach-24-7-ai/
+      \endverb
+      \verb{url}
+      \verb https://www.cnet.com/news/privacy/best-buy-data-breach-24-7-ai/
+      \endverb
+    \endentry
+    \entry{web:identity_theft}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{Identity Theft and Your Social Security Number}
+      \field{urlday}{16}
+      \field{urlmonth}{11}
+      \field{urlyear}{2022}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ssa.gov/pubs/EN-05-10064.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.ssa.gov/pubs/EN-05-10064.pdf
+      \endverb
+    \endentry
+    \entry{misc:bitcoin_origin}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=1977190f018b398e43ede3de043de8ea}{%
+           family={Nakamoto},
+           familyi={N\bibinitperiod},
+           given={Satoshi},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{1977190f018b398e43ede3de043de8ea}
+      \strng{fullhash}{1977190f018b398e43ede3de043de8ea}
+      \strng{bibnamehash}{1977190f018b398e43ede3de043de8ea}
+      \strng{authorbibnamehash}{1977190f018b398e43ede3de043de8ea}
+      \strng{authornamehash}{1977190f018b398e43ede3de043de8ea}
+      \strng{authorfullhash}{1977190f018b398e43ede3de043de8ea}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Bitcoin: A Peer-to-Peer Electronic Cash System}
+      \field{year}{2008}
+    \endentry
+    \entry{web:personal_info_darkweb}{online}{}
+      \name{author}{1}{}{%
+        {{hash=d4f09a36ed7d6c9163405fa4c44f77ee}{%
+           family={Nerd},
+           familyi={N\bibinitperiod},
+           given={Niles},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{d4f09a36ed7d6c9163405fa4c44f77ee}
+      \strng{fullhash}{d4f09a36ed7d6c9163405fa4c44f77ee}
+      \strng{bibnamehash}{d4f09a36ed7d6c9163405fa4c44f77ee}
+      \strng{authorbibnamehash}{d4f09a36ed7d6c9163405fa4c44f77ee}
+      \strng{authornamehash}{d4f09a36ed7d6c9163405fa4c44f77ee}
+      \strng{authorfullhash}{d4f09a36ed7d6c9163405fa4c44f77ee}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Is your information being sold on dark web}
+      \field{urlday}{23}
+      \field{urlmonth}{10}
+      \field{urlyear}{2022}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.nerdsonsite.com/blog/is-your-information-being-sold-on-dark-web/
+      \endverb
+      \verb{url}
+      \verb https://www.nerdsonsite.com/blog/is-your-information-being-sold-on-dark-web/
+      \endverb
+    \endentry
+    \entry{dis:usage_of_onion_services}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=b7c51966b2847e96e1b953293b93dbb8}{%
+           family={Nurmi},
+           familyi={N\bibinitperiod},
+           given={Juha},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Tampere University}%
+      }
+      \strng{namehash}{b7c51966b2847e96e1b953293b93dbb8}
+      \strng{fullhash}{b7c51966b2847e96e1b953293b93dbb8}
+      \strng{bibnamehash}{b7c51966b2847e96e1b953293b93dbb8}
+      \strng{authorbibnamehash}{b7c51966b2847e96e1b953293b93dbb8}
+      \strng{authornamehash}{b7c51966b2847e96e1b953293b93dbb8}
+      \strng{authorfullhash}{b7c51966b2847e96e1b953293b93dbb8}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Understanding the Usage of Anonymous Onion Services: Empirical Experiments to Study Criminal Activities in the Tor Network}
+      \field{type}{phdthesis}
+      \field{year}{2019}
+    \endentry
+    \entry{paper:de_tor}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=b7c51966b2847e96e1b953293b93dbb8}{%
+           family={Nurmi},
+           familyi={N\bibinitperiod},
+           given={Juha},
+           giveni={J\bibinitperiod}}}%
+        {{hash=4e49943e3a3572baa799ce1188b03e18}{%
+           family={Niemelä},
+           familyi={N\bibinitperiod},
+           given={Mikko\bibnamedelima S.},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=d2ade1cc491ab061c743877b9fac6eb4}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Zheng},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=a1c6aecc0efab4aac0a1e4f2571e2a43}{%
+           family={Molva},
+           familyi={M\bibinitperiod},
+           given={Refik},
+           giveni={R\bibinitperiod}}}%
+        {{hash=fb957ea74a4e9dd0f923d0c78d1900d6}{%
+           family={Mazurczyk},
+           familyi={M\bibinitperiod},
+           given={Wojciech},
+           giveni={W\bibinitperiod}}}%
+        {{hash=13e63626aff50b91ac3dbdbf23f0340a}{%
+           family={Kantola},
+           familyi={K\bibinitperiod},
+           given={Raimo},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{8703a332f3b9ab1ffe6ddcc80416f6c1}
+      \strng{fullhash}{8703a332f3b9ab1ffe6ddcc80416f6c1}
+      \strng{bibnamehash}{8703a332f3b9ab1ffe6ddcc80416f6c1}
+      \strng{authorbibnamehash}{8703a332f3b9ab1ffe6ddcc80416f6c1}
+      \strng{authornamehash}{8703a332f3b9ab1ffe6ddcc80416f6c1}
+      \strng{authorfullhash}{8703a332f3b9ab1ffe6ddcc80416f6c1}
+      \strng{editorbibnamehash}{a098608c723002204b56062534545133}
+      \strng{editornamehash}{a098608c723002204b56062534545133}
+      \strng{editorfullhash}{cf3c42a1ded4240c4a509173d4f62898}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Network and System Security}
+      \field{isbn}{978-3-319-64701-2}
+      \field{title}{Tor De-anonymisation Techniques}
+      \field{year}{2017}
+      \field{pages}{657\bibrangedash 671}
+      \range{pages}{15}
+    \endentry
+    \entry{web:onion_service}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b070908dd40c36372319958c7fbb22b5}{%
+           family={project},
+           familyi={p\bibinitperiod},
+           given={Tor},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{fullhash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{bibnamehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{authorbibnamehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{authornamehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{authorfullhash}{b070908dd40c36372319958c7fbb22b5}
+      \field{extraname}{1}
+      \field{sortinit}{p}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How Do Onion Services Work?}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2022}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://community.torproject.org/onion-services/overview/
+      \endverb
+      \verb{url}
+      \verb https://community.torproject.org/onion-services/overview/
+      \endverb
+    \endentry
+    \entry{web:onion_network}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b070908dd40c36372319958c7fbb22b5}{%
+           family={project},
+           familyi={p\bibinitperiod},
+           given={Tor},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{fullhash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{bibnamehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{authorbibnamehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{authornamehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{authorfullhash}{b070908dd40c36372319958c7fbb22b5}
+      \field{extraname}{2}
+      \field{sortinit}{p}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Tor:Overview}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2022}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://2019.www.torproject.org/about/overview.html.en#whyweneedtor
+      \endverb
+      \verb{url}
+      \verb https://2019.www.torproject.org/about/overview.html.en#whyweneedtor
+      \endverb
+    \endentry
+    \entry{web:relay_types}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b070908dd40c36372319958c7fbb22b5}{%
+           family={project},
+           familyi={p\bibinitperiod},
+           given={Tor},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{fullhash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{bibnamehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{authorbibnamehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{authornamehash}{b070908dd40c36372319958c7fbb22b5}
+      \strng{authorfullhash}{b070908dd40c36372319958c7fbb22b5}
+      \field{extraname}{3}
+      \field{sortinit}{p}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Types of relays}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2022}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://community.torproject.org/relay/types-of-relays/
+      \endverb
+      \verb{url}
+      \verb https://community.torproject.org/relay/types-of-relays/
+      \endverb
+    \endentry
+    \entry{dis:anonymity_system}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=6cae10745c47f1d095b9ba09fd05474a}{%
+           family={Serjantov},
+           familyi={S\bibinitperiod},
+           given={Andrei},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University of Cambridge}%
+      }
+      \strng{namehash}{6cae10745c47f1d095b9ba09fd05474a}
+      \strng{fullhash}{6cae10745c47f1d095b9ba09fd05474a}
+      \strng{bibnamehash}{6cae10745c47f1d095b9ba09fd05474a}
+      \strng{authorbibnamehash}{6cae10745c47f1d095b9ba09fd05474a}
+      \strng{authornamehash}{6cae10745c47f1d095b9ba09fd05474a}
+      \strng{authorfullhash}{6cae10745c47f1d095b9ba09fd05474a}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{On the anonymity of anonymity systems}
+      \field{type}{phdthesis}
+      \field{year}{2004}
+    \endentry
+    \entry{report:surfing_silk_road_23}{article}{}
+      \name{author}{2}{}{%
+        {{hash=6bd36a241ae56d0ea7630780bd63b84a}{%
+           family={Van\bibnamedelima Hout},
+           familyi={V\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Marie\bibnamedelima Claire},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=251fd5fbf9f7c46bb834ef921706659d}{%
+           family={Bingham},
+           familyi={B\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier BV}%
+      }
+      \strng{namehash}{a7b18c0896787d332efe612d279be96d}
+      \strng{fullhash}{a7b18c0896787d332efe612d279be96d}
+      \strng{bibnamehash}{a7b18c0896787d332efe612d279be96d}
+      \strng{authorbibnamehash}{a7b18c0896787d332efe612d279be96d}
+      \strng{authornamehash}{a7b18c0896787d332efe612d279be96d}
+      \strng{authorfullhash}{a7b18c0896787d332efe612d279be96d}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Int. J. Drug Policy}
+      \field{month}{11}
+      \field{number}{6}
+      \field{title}{'Surfing the Silk Road': a study of users' experiences}
+      \field{volume}{24}
+      \field{year}{2013}
+      \field{pages}{524\bibrangedash 529}
+      \range{pages}{6}
+      \keyw{Closed drug markets; Displacement patterns; Internet; Silk Road}
+    \endentry
+    \entry{web:rdp_wiki}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Remote Desktop Protocol}
+      \field{urlday}{14}
+      \field{urlmonth}{11}
+      \field{urlyear}{2022}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Remote_Desktop_Protocol
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Remote_Desktop_Protocol
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

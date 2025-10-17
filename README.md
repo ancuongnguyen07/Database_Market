@@ -11,6 +11,8 @@ $ cd ./report
 $ make
 ```
 
+*Cannot build the report?*. The final report is available [here](./report/report.pdf)
+
 ### Replicate the results of study
 If you already got the dataset, you can skip to step 4.
 1. Download the dataset at [this link](https://mega.nz/folder/aJwVyIYJ#9SWh-Z3-TpPfjHZeFxbeew)
